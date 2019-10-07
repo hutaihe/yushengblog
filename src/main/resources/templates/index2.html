@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>博客首页</title>
+
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="assets/css/shouye/index.css" th:href="@{/assets/css/shouye/index.css}" rel="stylesheet">
+</head>
+<body style="background: #ecf0f1">
+
+
+<div style="margin-top: 50px">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div id="singin">
+            <span style="margin-left: 180px">欢迎光临</span>
+            <span><a href="/toLogin">登录</a></span>
+            <span><a href="/test">test</a></span>
+        </div>
+        <div id="nav">
+            <div id="nav-wrap">
+                <div class="dropdown">
+                    <span class="searchbtn glyphicon glyphicon-search"></span>
+                    <div class="searchbox">
+                        <form>
+                            <input type="text" id="searchtext"><button id="sbtn">搜索</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><span class="glyphicon glyphicon-asterisk"> java开发</span> <span
+                            class="glyphicon glyphicon-triangle-bottom"></span></button>
+                    <div class="dropdown-content">
+                        <a href="#">菜单1</a>
+                        <a href="#">菜单2</a>
+                        <a href="#">菜单3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><span class="glyphicon glyphicon-phone-alt"> java开发</span> <span
+                            class="glyphicon glyphicon-triangle-bottom"></span></button>
+                    <div class="dropdown-content">
+                        <a href="#">菜单1</a>
+                        <a href="#">菜单2</a>
+                        <a href="#">菜单3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><span class="glyphicon glyphicon-phone-alt"> java开发 </span><span
+                            class="glyphicon glyphicon-triangle-bottom"></span></button>
+                    <div class="dropdown-content">
+                        <a href="#">菜单1</a>
+                        <a href="#">菜单2</a>
+                        <a href="#">菜单3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><span class="glyphicon glyphicon-phone-alt"> </span>java开发 <span
+                            class="glyphicon glyphicon-triangle-bottom"></span></button>
+                    <div class="dropdown-content">
+                        <a href="#">菜单1</a>
+                        <a href="#">菜单2</a>
+                        <a href="#">菜单3</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><span class="glyphicon glyphicon-phone-alt"> java开发</span> <span
+                            class="glyphicon glyphicon-triangle-bottom"></span></button>
+                    <div class="dropdown-content">
+                        <a href="#">菜单1</a>
+                        <a href="#">菜单2</a>
+                        <a href="#">菜单3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+</div>
+
+<!--container-->
+<div id="container">
+    <div id="leftcontrainer">
+        <!--轮播-->
+        <div id="myCarousel" class="carousel slide">
+
+            <ol class="carousel-indicators">
+
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+
+            </ol>
+
+            <div class="carousel-inner" style="width: 100%">
+
+                <div class="item active" style="background:#223240;">
+
+                    <img src="assets/images/lunbo/5" alt="first img" style="width: 100%;height: 300px">
+                    <!--图片不居中，让图片居中给这个img设置margin:0 auto-->
+
+                </div>
+
+                <div class="item" style="background:#F5E4DC;">
+
+                    <img src="assets/images/lunbo/6" alt="second img" style="width: 100%;height: 300px">
+
+                </div>
+
+                <div class="item" style="background:#DE2A2D;">
+
+                    <img src="assets/images/lunbo/7" alt="third img" style="width: 100%;height: 300px">
+
+                </div>
+
+            </div>
+            <a href="#myCarousel" data-slide="prev" class="carousel-control left">
+
+                <span class="glyphicon glyphicon-chevron-left"></span>
+
+            </a>
+
+            <a href="#myCarousel" data-slide="next" class="carousel-control right">
+
+                <span class="glyphicon glyphicon-chevron-right"></span>
+
+            </a>
+        </div>
+        <!--轮播-->
+        <!--文章内容-->
+        <div id="content">
+            <ul>
+                <li>
+                    <!--图片-->
+                    <div style="height: 130px;width: 30%;float: left">
+                        <img src="assets/images/thumbnail/1.jpg" style="height: 130px;width: 100%">
+                    </div>
+                    <!--标题-->
+                    <div style="width: 67%;height: 130px;float: right">
+                        <h1 class="entry-title">
+                            <a href="#" rel="bookmark">
+                                基于SpringBoot+Shiro+Redis+ElasticSearch实现的博客系统，欢迎注册使用
+                            </a>
+                        </h1>
+                        <div class="entry-content">
+                            <div class="archive-content">
+                                博主于去年下半年辞职到过年这段时间，重新整了一下博客系统。 预览地址：http://blog.liuyanzhao.com &nbsp;一、功能介绍本博客系统基于
+                                SpringBoot 2.x ，支持...
+                            </div>
+                            <span class="title-l"></span>
+                            <span class="new-icon"></span>
+                            <span class="entry-meta">
+                                <span class="date">2019年02月07日&nbsp;&nbsp;</span>
+                                <span class="views"><i class="fa fa-eye"></i> 3162 views</span>
+                                <span class="comment">&nbsp;&nbsp;
+                                    <a href="#" rel="external nofollow">
+                                        <i class="fa fa-comment-o"></i> 30
+                                    </a>
+                                </span>
+                            </span>
+                            <div class="clear"></div>
+                        </div><!-- .entry-content -->
+                        <div style="position: absolute"></div>
+                        <span class="entry-more">
+                            <a href="#">阅读全文</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <!--图片-->
+                    <div style="height: 130px;width: 30%;float: left">
+                        <img src="assets/images/thumbnail/1.jpg" style="height: 130px;width: 100%">
+                    </div>
+                    <!--标题-->
+                    <div style="width: 67%;height: 130px;float: right">
+                        <h1 class="entry-title">
+                            <a href="#" rel="bookmark">
+                                基于SpringBoot+Shiro+Redis+ElasticSearch实现的博客系统，欢迎注册使用
+                            </a>
+                        </h1>
+                        <div class="entry-content">
+                            <div class="archive-content">
+                                博主于去年下半年辞职到过年这段时间，重新整了一下博客系统。 预览地址：http://blog.liuyanzhao.com &nbsp;一、功能介绍本博客系统基于
+                                SpringBoot 2.x ，支持...
+                            </div>
+                            <span class="title-l"></span>
+                            <span class="new-icon"></span>
+                            <span class="entry-meta">
+                                <span class="date">2019年02月07日&nbsp;&nbsp;</span>
+                                <span class="views"><i class="fa fa-eye"></i> 3162 views</span>
+                                <span class="comment">&nbsp;&nbsp;
+                                    <a href="#" rel="external nofollow">
+                                        <i class="fa fa-comment-o"></i> 30
+                                    </a>
+                                </span>
+                            </span>
+                            <div class="clear"></div>
+                        </div><!-- .entry-content -->
+                        <div style="position: absolute"></div>
+                        <span class="entry-more">
+                            <a href="#">阅读全文</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <!--图片-->
+                    <div style="height: 130px;width: 30%;float: left">
+                        <img src="assets/images/thumbnail/1.jpg" style="height: 130px;width: 100%">
+                    </div>
+                    <!--标题-->
+                    <div style="width: 67%;height: 130px;float: right">
+                        <h1 class="entry-title">
+                            <a href="#" rel="bookmark">
+                                基于SpringBoot+Shiro+Redis+ElasticSearch实现的博客系统，欢迎注册使用
+                            </a>
+                        </h1>
+                        <div class="entry-content">
+                            <div class="archive-content">
+                                博主于去年下半年辞职到过年这段时间，重新整了一下博客系统。 预览地址：http://blog.liuyanzhao.com &nbsp;一、功能介绍本博客系统基于
+                                SpringBoot 2.x ，支持...
+                            </div>
+                            <span class="title-l"></span>
+                            <span class="new-icon"></span>
+                            <span class="entry-meta">
+                                <span class="date">2019年02月07日&nbsp;&nbsp;</span>
+                                <span class="views"><i class="fa fa-eye"></i> 3162 views</span>
+                                <span class="comment">&nbsp;&nbsp;
+                                    <a href="#" rel="external nofollow">
+                                        <i class="fa fa-comment-o"></i> 30
+                                    </a>
+                                </span>
+                            </span>
+                            <div class="clear"></div>
+                        </div><!-- .entry-content -->
+                        <div style="position: absolute"></div>
+                        <span class="entry-more">
+                            <a href="#">阅读全文</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <!--图片-->
+                    <div style="height: 130px;width: 30%;float: left">
+                        <img src="assets/images/thumbnail/1.jpg" style="height: 130px;width: 100%">
+                    </div>
+                    <!--标题-->
+                    <div style="width: 67%;height: 130px;float: right">
+                        <h1 class="entry-title">
+                            <a href="#" rel="bookmark">
+                                基于SpringBoot+Shiro+Redis+ElasticSearch实现的博客系统，欢迎注册使用
+                            </a>
+                        </h1>
+                        <div class="entry-content">
+                            <div class="archive-content">
+                                博主于去年下半年辞职到过年这段时间，重新整了一下博客系统。 预览地址：http://blog.liuyanzhao.com &nbsp;一、功能介绍本博客系统基于
+                                SpringBoot 2.x ，支持...
+                            </div>
+                            <span class="title-l"></span>
+                            <span class="new-icon"></span>
+                            <span class="entry-meta">
+                                <span class="date">2019年02月07日&nbsp;&nbsp;</span>
+                                <span class="views"><i class="fa fa-eye"></i> 3162 views</span>
+                                <span class="comment">&nbsp;&nbsp;
+                                    <a href="#" rel="external nofollow">
+                                        <i class="fa fa-comment-o"></i> 30
+                                    </a>
+                                </span>
+                            </span>
+                            <div class="clear"></div>
+                        </div><!-- .entry-content -->
+                        <div style="position: absolute"></div>
+                        <span class="entry-more">
+                            <a href="#">阅读全文</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <!--图片-->
+                    <div style="height: 130px;width: 30%;float: left">
+                        <img src="assets/images/thumbnail/1.jpg" style="height: 130px;width: 100%">
+                    </div>
+                    <!--标题-->
+                    <div style="width: 67%;height: 130px;float: right">
+                        <h1 class="entry-title">
+                            <a href="#" rel="bookmark">
+                                基于SpringBoot+Shiro+Redis+ElasticSearch实现的博客系统，欢迎注册使用
+                            </a>
+                        </h1>
+                        <div class="entry-content">
+                            <div class="archive-content">
+                                博主于去年下半年辞职到过年这段时间，重新整了一下博客系统。 预览地址：http://blog.liuyanzhao.com &nbsp;一、功能介绍本博客系统基于
+                                SpringBoot 2.x ，支持...
+                            </div>
+                            <span class="title-l"></span>
+                            <span class="new-icon"></span>
+                            <span class="entry-meta">
+                                <span class="date">2019年02月07日&nbsp;&nbsp;</span>
+                                <span class="views"><i class="fa fa-eye"></i> 3162 views</span>
+                                <span class="comment">&nbsp;&nbsp;
+                                    <a href="#" rel="external nofollow">
+                                        <i class="fa fa-comment-o"></i> 30
+                                    </a>
+                                </span>
+                            </span>
+                            <div class="clear"></div>
+                        </div><!-- .entry-content -->
+                        <div style="position: absolute"></div>
+                        <span class="entry-more">
+                            <a href="#">阅读全文</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <!--图片-->
+                    <div style="height: 130px;width: 30%;float: left">
+                        <img src="assets/images/thumbnail/1.jpg" style="height: 130px;width: 100%">
+                    </div>
+                    <!--标题-->
+                    <div style="width: 67%;height: 130px;float: right">
+                        <h1 class="entry-title">
+                            <a href="#" rel="bookmark">
+                                基于SpringBoot+Shiro+Redis+ElasticSearch实现的博客系统，欢迎注册使用
+                            </a>
+                        </h1>
+                        <div class="entry-content">
+                            <div class="archive-content">
+                                博主于去年下半年辞职到过年这段时间，重新整了一下博客系统。 预览地址：http://blog.liuyanzhao.com &nbsp;一、功能介绍本博客系统基于
+                                SpringBoot 2.x ，支持...
+                            </div>
+                            <span class="title-l"></span>
+                            <span class="new-icon"></span>
+                            <span class="entry-meta">
+                                <span class="date">2019年02月07日&nbsp;&nbsp;</span>
+                                <span class="views"><i class="fa fa-eye"></i> 3162 views</span>
+                                <span class="comment">&nbsp;&nbsp;
+                                    <a href="#" rel="external nofollow">
+                                        <i class="fa fa-comment-o"></i> 30
+                                    </a>
+                                </span>
+                            </span>
+                            <div class="clear"></div>
+                        </div><!-- .entry-content -->
+                        <div style="position: absolute"></div>
+                        <span class="entry-more">
+                            <a href="#">阅读全文</a>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <!--图片-->
+                    <div style="height: 130px;width: 30%;float: left">
+                        <img src="assets/images/thumbnail/1.jpg" style="height: 130px;width: 100%">
+                    </div>
+                    <!--标题-->
+                    <div style="width: 67%;height: 130px;float: right">
+                        <h1 class="entry-title">
+                            <a href="#" rel="bookmark">
+                                基于SpringBoot+Shiro+Redis+ElasticSearch实现的博客系统，欢迎注册使用
+                            </a>
+                        </h1>
+                        <div class="entry-content">
+                            <div class="archive-content">
+                                博主于去年下半年辞职到过年这段时间，重新整了一下博客系统。 预览地址：http://blog.liuyanzhao.com &nbsp;一、功能介绍本博客系统基于
+                                SpringBoot 2.x ，支持...
+                            </div>
+                            <span class="title-l"></span>
+                            <span class="new-icon"></span>
+                            <span class="entry-meta">
+                                <span class="date">2019年02月07日&nbsp;&nbsp;</span>
+                                <span class="views"><i class="fa fa-eye"></i> 3162 views</span>
+                                <span class="comment">&nbsp;&nbsp;
+                                    <a href="#" rel="external nofollow">
+                                        <i class="fa fa-comment-o"></i> 30
+                                    </a>
+                                </span>
+                            </span>
+                            <div class="clear"></div>
+                        </div><!-- .entry-content -->
+                        <div style="position: absolute"></div>
+                        <span class="entry-more">
+                            <a href="#">阅读全文</a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--文章内容-->
+        <!--分页条-->
+        <div>
+            <nav aria-label="Page navigation" style="float: right;margin-right: 10px">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="rigthcontainer">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="font-size: 15px">
+                <span class="glyphicon glyphicon-menu-hamburger" style="color: #2C8686"></span>
+                <b>关于本站</b>
+            </div>
+            <div class="panel-body">
+                <div>
+                    <img src="assets/images/thumbnail/2.jpg">
+                    <div class="about-name">博客初心</div>
+                    <div class="about-the">
+                        言曌博客，个人程序人生的点滴记录和时光储备。淡泊明志，宁静致远。珍惜原创，矢志不渝。
+                    </div>
+                </div>
+            </div>
+            <div class="about-inf">
+                <span class="about-pn">文章 808</span>
+                <span class="about-cn">留言 1758</span>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="font-size: 15px">
+                <span class="glyphicon glyphicon-menu-hamburger" style="color: #2C8686"></span>
+                <b>网站概况</b>
+            </div>
+            <div class="panel-body">
+                <div class="widget-text">
+                    <ul class="site-profile">
+                        <li><i class="glyphicon glyphicon-file"></i>
+                            文章总数：808 篇
+                        </li>
+                        <li><i class="glyphicon glyphicon-modal-window"></i>
+                            留言数量：1758 条
+                        </li>
+                        <li><i class="glyphicon glyphicon-tasks"></i>
+                            分类数量：49 个
+                        </li>
+                        <li><i class="glyphicon glyphicon-tag"></i>
+                            标签总数：68 个
+                        </li>
+                        <li><i class="glyphicon glyphicon-link"></i>
+                            链接数量：2 个
+                        </li>
+                        <li><i class="glyphicon glyphicon-time"></i>
+                            运行时间：1 天</li>
+                        <li><i class="glyphicon glyphicon-eye-open"></i>
+                            浏览总量：730058 次
+                        </li>
+                        <li><i class="glyphicon glyphicon-edit"></i> 最后更新：
+                            <span style="color:#2F889A">2019年06月12日</span>
+                        </li>
+                        <span style="color:red;">
+                             加油！不要因为走的太远，而忘了当初为什么出发。
+                        </span>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="font-size: 15px">
+                <span class="glyphicon glyphicon-menu-hamburger" style="color: #2C8686"></span>
+                <b>阅读榜</b>
+            </div>
+            <div class="panel-body">
+                <div id="hot_comment_widget">
+                    <ul>
+                        <li>
+                            <span class='colorred'>1</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+                        <li>
+                            <span class='colorred'>2</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+                        <li>
+                            <span class='colorred'>3</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+                        <li>
+                            <span class='colorblack'>4</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li> <li>
+                        <span class='colorblack'>5</span>
+                        <a href="#" rel="bookmark" title=" 122161 views">
+                            【新】三国志13威力加强pk版
+                        </a>
+                    </li>
+                        <li>
+                            <span class='colorblack'>6</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+                        <li>
+                            <span class='colorblack'>7</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+                        <li>
+                            <span class='colorblack'>8</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+                        <li>
+                            <span class='colorblack'>9</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+                        <li>
+                            <span class='colorblack'>10</span>
+                            <a href="#" rel="bookmark" title=" 122161 views">
+                                【新】三国志13威力加强pk版
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="font-size: 15px">
+                <span class="glyphicon glyphicon-menu-hamburger" style="color: #2C8686"></span>
+                <b>热门标签</b>
+            </div>
+            <div class="panel-body">
+                <div class="tagcloud">
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+                    <button class="btncolor" type="button">
+                        java
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="font-size: 15px">
+                <span class="glyphicon glyphicon-menu-hamburger" style="color: #2C8686"></span>
+                <b>近期评论</b>
+            </div>
+            <div class="panel-body">
+                <div id="message" class="message-widget">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <span  class="glyphicon glyphicon-user"></span>
+                                </div>
+                                <div class="comment">
+                                    <span class="comment_author" style=""><strong>HickSalmon</strong></span>
+                                    11111
+                                </div>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <span  class="glyphicon glyphicon-user"></span>
+                                </div>
+                                <div class="comment">
+                                    <span class="comment_author" style=""><strong>HickSalmon</strong></span>
+                                    11111
+                                </div>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <span  class="glyphicon glyphicon-user"></span>
+                                </div>
+                                <div class="comment">
+                                    <span class="comment_author" style=""><strong>HickSalmon</strong></span>
+                                    11111
+                                </div>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <span  class="glyphicon glyphicon-user"></span>
+                                </div>
+                                <div class="comment">
+                                    <span class="comment_author" style=""><strong>HickSalmon</strong></span>
+                                    11111
+                                </div>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <span  class="glyphicon glyphicon-user"></span>
+                                </div>
+                                <div class="comment">
+                                    <span class="comment_author" style=""><strong>HickSalmon</strong></span>
+                                    11111
+                                </div>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon">
+                                    <span  class="glyphicon glyphicon-user"></span>
+                                </div>
+                                <div class="comment">
+                                    <span class="comment_author" style=""><strong>HickSalmon</strong></span>
+                                    11111
+                                </div>
+
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+        </div>
+        <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+        <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--下拉时导航条变透明-->
+        <script>
+            $(document).ready(function(){
+                var scroll_top = null;
+                var opacity = null;
+                $(window).scroll(function(){
+                    scroll_top = $(window).scrollTop() / 1000;
+                    if (scroll_top <= 0.5){
+                        $('.navbar').css({"opacity": 0.9});
+                        $("#nav").color({"opacity": 1});
+                    }
+                })
+            })
+            $(".searchbtn").click(function(){
+                if($('.searchbox').is(':hidden')){
+                    $('.searchbox').show();
+
+                }else{
+                    $('.searchbox').hide();
+                }
+              /*  if($('.searchbox').is(':show')){
+                    alert("asdasd");
+                   // $('.searchbox').hidden();
+
+                }*/
+            });
+        </script>
+</body>
+</html>

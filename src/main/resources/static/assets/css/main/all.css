@@ -1,0 +1,125 @@
+
+/*内容*/
+#content{
+    margin-top: 15px;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    padding-bottom: 20px;
+    width: 97%;
+}
+/*切换面板*/
+#top ul{
+    margin: 0;
+    padding: 0;
+    clear: both;
+    height: 30px;
+   list-style: none;
+}
+#top ul li{
+    float: left;
+    margin-left: 5px;
+    cursor:pointer;
+    color: #3498db;
+}
+#top ul li:hover{
+    opacity: 0.7;
+    cursor: pointer;
+    color: #3498db;
+}
+#tab1{
+    background: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+}
+#tab2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+    display: none;
+    border-radius: 4px;
+}
+#tab3{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: none;
+    background: white;
+    border-radius: 4px;
+}
+#tab4{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: none;
+    background: white;
+    border-radius: 4px;
+}
+.table{
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.table thead tr{
+    font-weight: 600;
+}
+.table tr{
+    border: 1px solid #ECEFF4;
+    text-align: left;
+    padding: 0px;
+}
+.table tr td{
+    border: 1px solid #ECEFF4;
+}
+.tfoor{
+    padding-top: 10px;
+    border-top: 1px solid #ECEFF4;
+    margin-top: 10px;
+    background: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow:hidden;
+}
+.tfoor .tleft{
+    float: left;
+}
+.tfoor .trigth{
+    float: right;
+}
+.tfoor .trigth ul li{
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 30px;
+    height: 30px;
+    border: 1px solid #ECEFF4;
+    border-radius: 4px;
+    list-style: none;
+    color: black;
+}
+.tfoor .trigth ul li:hover{
+   cursor: pointer;
+}
+/*操作的按钮*/
+#tranbtn a{
+    color: black;
+    font-size: 15px;
+    padding: 0px;
+    float: left;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 3px;
+    border-radius: 4px;
+    color: white;
+}
+#tranbtn .a1{
+   background: #0d71bb;
+}
+#tranbtn .a2{
+    background: #0E566C;
+}
+#tranbtn .a3{
+    background: red;
+}
+#tranbtn a:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}

@@ -1,0 +1,80 @@
+.container{
+    width: 97%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    padding: 0px;
+}
+.panel-default{
+    border: 0px solid white;
+}
+.panel-heading{
+    overflow: hidden;
+    padding: 0px;
+}
+.panel-heading ul{
+    margin: 0px;
+    padding: 0px;
+}
+.panel-heading ul li{
+    float: left;
+    list-style: none;
+    padding: 15px;
+    border-right: 1px solid #ecf0f1;
+}
+.panel-heading ul li:hover span{
+   opacity: 0.7;
+    cursor: pointer;
+}
+#body2{
+    display: none;
+}
+.formgroup{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.formgroup label{
+   width: 15%;
+}
+.formgroup input{
+    width: 30%;
+    height: 35px;
+    border: 1px solid #95a5a6;
+}
+.formgroup textarea{
+    width: 30%;
+    height: 100px;
+    resize: none;
+    border: 1px solid #95a5a6;
+}
+#selectedbtn{
+    background: #ecf0f1;
+    border: 1px solid #95a5a6;
+    height: 35px;
+    margin: 0px;
+    width: 4%;
+}
+#savebtn{
+    background: #3498db;
+    border: 1px solid #3498db;
+    color: white;
+    border-radius: 4px;
+    outline:none;
+}
+#savebtn:hover{
+    background: #2980b9;
+}
+#updatebtn{
+    background: #3498db;
+    border: 1px solid #3498db;
+    color: white;
+    border-radius: 4px;
+    outline:none;
+}
+#updatebtn:hover{
+    background: #2980b9;
+}
+#foot2{
+    display: none;
+}

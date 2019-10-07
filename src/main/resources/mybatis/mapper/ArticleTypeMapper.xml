@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.ArticleTypeMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.ArticleType" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="articleid" property="articleid" jdbcType="INTEGER" />
+        <result column="typeid" property="typeid" jdbcType="INTEGER" />
+    </resultMap>
+    <insert id="saveArticleType">
+        insert into t_article_type(articleid,typeid)
+        values (#{articleid},#{typeid})
+    </insert>
+    <!--根据用户查询类型-->
+    <select id="queryTypeByArticleId" resultType="com.gdgm.blog.bean.Type">
+        select t_type.id,t_type.name,t_type.pid from t_type,t_article,t_article_type
+ where t_type.id = t_article_type.typeid and t_article_type.articleid = t_article.id and t_article.id = #{id}
+    </select>
+    <!--根据articleid删除分类-->
+    <delete id="deleteArticleType">
+       delete from t_article_type where articleid = #{articleid}
+    </delete>
+    <!--查询所有-->
+    <select id="queryAllArticleType" resultMap ="BaseResultMap">
+        select * from t_article_type
+    </select>
+    <!--根据typeid删除分类-->
+    <delete id="deleteArticleTypeByTypeId">
+        delete from t_article_type where typeid = #{id}
+    </delete>
+</mapper>

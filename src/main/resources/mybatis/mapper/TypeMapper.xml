@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.TypeMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.Type" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="pid" property="pid" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="queryAllType" resultMap = "BaseResultMap">
+      select * from t_type;
+    </select>
+    <insert id="saveType">
+        insert into  t_type(pid,name) values(#{pid},#{typename})
+    </insert>
+    <select id="queryTypeById" resultMap="BaseResultMap">
+        select * from t_type where id= #{id};
+    </select>
+    <!--根据id修改分类-->
+    <update id="updateTypeById">
+        update t_type set pid = #{pid},name = #{name} where id = #{id}
+    </update>
+    <!--根据分类名字查询分类-->
+    <select id="queryTypeByName" resultMap="BaseResultMap">
+        select * from t_type where name = #{typename}
+    </select>
+    <!--根据id删除分类-->
+    <delete id="deleteTypeById">
+        delete from t_type where id = #{id}
+    </delete>
+    <!--根据pid查询分类-->
+    <select id="queryTyepByPid" resultMap="BaseResultMap">
+        select * from t_type where pid = #{id}
+    </select>
+</mapper>

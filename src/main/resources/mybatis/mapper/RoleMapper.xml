@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.Role" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="queryRoleByMemberid" resultMap="BaseResultMap">
+        select  t_role.id,t_role.name from t_role,t_member_role where t_role.id = t_member_role.roleid and t_member_role.memberid =#{id}
+    </select>
+    <select id="queryRoleByName" resultMap="BaseResultMap">
+        select * from t_role where name = #{name}
+    </select>
+</mapper>

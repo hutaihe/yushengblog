@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.ArticleMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.Article" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="memberid" property="memberid" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="pid" property="pid" jdbcType="VARCHAR" />
+        <result column="evaluate" property="evaluate" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="access" property="access" jdbcType="INTEGER" />
+        <result column="creationtime" property="creationtime" jdbcType="VARCHAR" />
+        <result column="likenum" property="likenum" jdbcType="INTEGER" />
+        <result column="comnum" property="comnum" jdbcType="INTEGER" />
+        <result column="fabulous" property="fabulous" jdbcType="INTEGER" />
+    </resultMap>
+    <!--保存文章-->
+    <insert id="saveArticle" useGeneratedKeys="true" keyProperty="id" parameterType="com.gdgm.blog.bean.Article">
+        insert into t_article(memberid,title,content,pid,evaluate,type,status,access,creationtime)
+        values (#{memberid},#{title},#{content},#{pid},#{evaluate},#{type},#{status},#{access},#{creationtime})
+    </insert>
+    <!--根据状态查询文章-->
+    <select id="queryArticles" resultType="com.gdgm.blog.bean.Article">
+        select * from t_article where status = #{data} and memberid=#{memberid} order by creationtime desc limit #{startIndex},#{pagesize}
+
+    </select>
+    <!--根据用户id查询所有文章-->
+    <select id="queryAllArticle" resultType="int">
+        select count(*) from t_article where status = #{data} and memberid=#{memberid}
+    </select>
+
+    <!--管理员根据状态查询所有文章-->
+    <select id="queryAdminArticles" resultType="com.gdgm.blog.bean.Article">
+        select * from t_article where status = #{data} order by creationtime desc limit #{startIndex},#{pagesize}
+
+    </select>
+    <!--管理员查询篇数-->
+    <select id="queryAdminAllArticle" resultType="int">
+        select count(*) from t_article where status = #{data}
+    </select>
+
+
+    <!--根据id查询文章-->
+    <select id="queryArticleById" resultMap="BaseResultMap">
+        select * from t_article where id = #{id}
+    </select>
+    <!--根据id修改文章-->
+    <update id="updateArticleById">
+        update t_article set title = #{title},
+                             content = #{content},
+                             pid = #{pid},
+                             evaluate = #{evaluate},
+                             type = #{type},
+                             status = #{status},
+                             access = #{access}
+                           where id= #{id} and memberid = #{memberid}
+    </update>
+    <!--修改状态根据文章id-->
+    <update id="updateStatusById">
+        update t_article set status = #{status} where id = #{id}
+    </update>
+    <!--查询文章根据状态-->
+    <select id="queryArticleByStatus">
+        select count(*) t_article where memberid=#{memberid} and status = #{status}
+    </select>
+    <!--根据文章id删除文章-->
+    <delete id="deleteArticle">
+        delete from t_article where id = #{id}
+    </delete>
+    <!--查询总文章数-->
+    <select id="queryAllCount" resultType="int">
+        select count(*) from t_article
+    </select>
+    <!--根据用户id查询文章数-->
+    <select id="queryAllCountByMemberid" resultType="int">
+        select count(*) from t_article where memberid = #{id}
+    </select>
+    <!--分页查询文章-->
+    <select id="queryPage" resultMap="BaseResultMap">
+        select * from t_article where status = '2' order by id desc limit #{pageno},#{pagesize}
+    </select>
+    <!--根据分类查询文章-->
+    <select id="queryPageByType" resultMap="BaseResultMap">
+        select * from t_article where id in (select articleid from t_article_type where typeid =#{id}) and status = '2' limit #{startIndex},#{pagesize}
+    </select>
+    <!--根据访问量排序查询文章-->
+    <select id="queryArticleByAccess" resultMap="BaseResultMap">
+        select * from t_article where status = '2' order by access desc
+    </select>
+    <!--根据标签id查询文章-->
+    <select id="queryPageByLabel" resultMap="BaseResultMap">
+        select * from t_article where id in (select articleid from t_article_label where labelid =#{id}) and status = '2' limit #{startIndex},#{pagesize}
+    </select>
+    <!--根据喜欢查询文章前10条-->
+    <select id="queryArticleByLike" resultType="com.gdgm.blog.common.result.ArticleResult">
+        select * from t_article order by likenum desc limit 10
+    </select>
+    <!--根据作者查询文章-->
+   <select id="queryPageByMember" resultMap="BaseResultMap">
+        select * from t_article where memberid = #{id}  and status = '2' limit #{startIndex},#{pagesize}
+    </select>
+    <!--查询文章id比传过来的id大的文章-->
+    <select id="queryArticlesByGreaterThanId" resultMap="BaseResultMap">
+        select * from t_article where id > #{id} and id in (select articleid from t_article_type where typeid = #{typeid}) and status = '2'
+    </select>
+    <!--查询文章id比传过来的id小的文章-->
+    <select id="queryArticlesByLessThanId" resultMap="BaseResultMap">
+        select * from t_article where id &lt; #{id} and id in (select articleid from t_article_type where typeid = #{typeid}) and status = '2'
+    </select>
+    <!--查询四条推荐文章-->
+    <select id="queryFiveArticle" resultMap="BaseResultMap">
+        select t_article.id,t_article.title,t_article.pid from t_article,t_article_type
+         where t_article.id = t_article_type.articleid and t_article_type.typeid = #{typeid}
+         and t_article.id != #{articleid} and t_article.status='2' order by rand() limit 4
+    </select>
+    <!--文章评论加1-->
+    <update id="updateComnumByArticleid">
+        update t_article set comnum = comnum+1 where  id = #{articleid}
+    </update>
+
+    <!--文章评论减n-->
+    <update id="updateReduceComnumByArticleid">
+        update t_article set comnum = comnum-#{count} where  id = #{articleid}
+    </update>
+    <!--喜欢-->
+    <update id="updateLikeById">
+        update t_article set likenum = likenum +#{num} where  id = #{id}
+    </update>
+    <!--点赞-->
+    <update id="updateFabulousArticleById">
+        update t_article set fabulous = fabulous +#{num} where  id = #{id}
+    </update>
+    <!--访问量-->
+    <update id="updateAccessById">
+        update t_article set access = access +1 where  id = #{id}
+    </update>
+    <!--根据关键字查询-->
+    <select id="queryCountByKeyCoke" resultType="int">
+        select count(*) from t_article where title like concat("%",#{keycode},"%") and status = '2'
+    </select>
+    <!--根据关键字查询文章-->
+    <select id="queryPageByKeyCoke" resultType="com.gdgm.blog.common.result.ArticleResult">
+        select * from t_article where  title like concat("%",#{keycode},"%") and status = '2' limit #{startIndex},#{pagesize}
+    </select>
+</mapper>

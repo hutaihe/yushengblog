@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>博客分类</title>
+
+    <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet">
+    <link href="assets/css/potal/index.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <span class="top">欢迎光临！<a href="/toLogin">登录 </a></span>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-color" role="navigation" style="background: #0099CC">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">个人博客</a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav" id="nav">
+                <li><a href="/">首页</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <input type="hidden" id="pageno" name="1">
+        </div>
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-align-justify"></span> 热门排行</div>
+                <div class="panel-body">
+                    <ul id="popular">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-align-justify"></span> 标签库</div>
+                <div class="panel-body label-button" id="label">
+
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-align-justify"></span> 猜你喜欢</div>
+                <div class="panel-body">
+                    <ul id="like">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+
+</div>
+<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script>
+    //获取参数中的id
+    var id ;
+    // 记录父id
+    var parentid ;
+    window.onload=function(){
+        id=  GetQueryString("id");
+        loadNav();
+        loadArticle(1,5,id);
+        loadPopular();
+        loadLabel();
+        loadLike()
+
+    }
+
+    //加载导航条
+    function loadNav(){
+        $.ajax({
+            type:"post",
+            url: "/loadNav",
+            success : function(result){
+                if(result.success){
+                    var data = result.typeList;
+                    var content = "";
+                    $.each(data,function(i,n){
+                        if(n.typeList.length != 0){
+                            if(id == n.id){
+                                parentid =  n.id;
+                            }
+                            content += " <li id='"+n.id+"' class='dropdown'>";
+                            content += "<a href='"+n.url+"?id="+n.id+"' class='dropdown-toggle' data-toggle='dropdown'>";
+                            content +=n.name+ "<b class='caret'></b>";
+                            content += " </a>";
+                            content += "<ul  class='dropdown-menu'>";
+                            $.each(n.typeList,function(i,b){
+                                if(id == b.id){
+                                    parentid =  n.id;
+
+                                }
+                                content += "<li><a href='"+b.url+"?id="+b.id+"'>"+b.name+"</a></li>";
+                            });
+                            content += "</ul>";
+                            content += "</li>";
+                        }else{
+                            if(id == n.id){
+                                parentid= n.id;
+                            }
+                            content += "<li id='"+n.id+"'><a href='"+n.url+"?id="+n.id+"'>"+n.name+"</a></li>";
+                        }
+                    });
+                    $("#nav").append(content);
+                }else{
+                    alert("系统异常！");
+                }
+                backred(parentid);
+            }
+
+        })
+
+    }
+    //加载文章
+    function loadArticle(pageno,pagesize,id){
+        $.ajax({
+            type:"post",
+            data : {
+                "pagesize" : pagesize,
+                "pageno" : pageno,
+                "id" : id
+            },
+            url : "/loadArticleByTypeid",
+            success : function(result){
+                if(result.success){
+                    var page = result.page;
+                    var data = page.articleResults;
+                    var content = "";
+                    $.each(data,function(i,n){
+                        content +='<div class="excerpt">';
+                        content +='            <header>';
+                        content +='                <a class="label">'+n.classification.name+'</a>';
+                        content +='                <i class="glyphicon glyphicon-triangle-right"></i>';
+                        content +='                <a href="/article?id='+n.id+'" class="arcitle-title" title='+n.title+'>';
+                        content +='                    '+n.title+'';
+                        content +='                </a>';
+                        content +='            </header>';
+                        content +='            <div class="focus">';
+                        content +='                <a href="">';
+                        content +='                    <img src="/image/thumbnail/'+n.picture.iconpath+'">';
+                        content +='                </a>';
+                        content +='            </div>';
+                        content +='            <span class="note">'+n.content+'';
+                        content +='                </span>';
+                        content +='            <p>';
+                        content +='                <span class="glyphicon glyphicon-user" style="color: #0099CC"><a style="color: #0099CC" href="/author?id='+n.memberid+'">'+n.username+' </a></span>';
+                        content +='                <span class="glyphicon glyphicon-eye-open" style="color: #95a5a6"><a>'+n.access+'浏览 </a></span>';
+                        content +='                <span class="glyphicon glyphicon-comment" style="color: #95a5a6"><a>'+n.comnum+'评论 </a></span>';
+                        content +='                <span class="glyphicon glyphicon-heart" style="color: #FF6666"><a >'+n.likenum+'喜欢 </a></span>';
+                        content +='            </p>';
+                        content +='</div>';
+                    });
+                    //记录当前页
+                    $("#pageno").val(page.pageno);
+                    $(".col-lg-9").append(content);
+                }
+            }
+        })
+    }
+    //滚动条
+    $(window).scroll(function() {
+        if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+            var pageno = $("#pageno").val();
+            pageno =  parseInt(pageno)+1;
+            loadArticle(pageno,5,id);
+            $("#pageno").val(pageno+1);
+        }
+    });
+    //获取请求地址的参数
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    //给导航条标红
+    function backred(parentid){
+       $("#"+parentid).addClass("active")
+    }
+    //热门排行
+    function loadPopular(){
+        $.ajax({
+            type : "post",
+            url : "/loadPopular",
+            success : function(result){
+                if(result.success){
+                    var data = result.articleList;
+                    var content = "";
+                    $.each(data,function(i,n){
+                        content += " <li>";
+                        if(i == 0){
+                            content += " <span class='label-1'>"+(i+1)+"</span>";
+                        }else if(i == 1){
+                            content += " <span class='label-2'>"+(i+1)+"</span>";
+                        }else if(i == 2){
+                            content += " <span class='label-3'>"+(i+1)+"</span>";
+                        }else{
+                            content += " <span class='label-4'>"+(i+1)+"</span>";
+                        }
+                        content += "  <a href='/article?id="+n.id+"'>"+n.title+"</a>";
+                        content += " </li>";
+                    });
+                    $("#popular").html(content);
+                }
+            }
+        })
+    }
+    //标签库
+    function loadLabel(){
+        $.ajax({
+            type: "post",
+            url: "/loadLabel",
+            success: function (result) {
+                if (result.success) {
+                    var data = result.ldata;
+                    var content = "";
+                    $.each(data, function (i, n) {
+                        content += " <button onclick='toTag("+n.id+")'>" + n.name + "</button>";
+                    });
+                    $("#label").html(content);
+                }
+            }
+        })
+    }
+    function toTag(id){
+        window.location.href="/tag?id="+id;
+    }
+    //猜你喜欢
+    function loadLike(){
+        $.ajax({
+            type : "post",
+            url : "/loadLike",
+            success :function(result){
+                if(result.success){
+                    var data = result.articleResults;
+                    var content = "";
+                    $.each(data,function(i,n){
+                        content += " <li class='like'>";
+                        content += " <span class='like-1'>";
+                        content += " <img src='/image/thumbnail/"+n.picture.iconpath+"'>";
+                        content += " </span>";
+                        content += " <span class='like-2'>";
+                        content += " <a href='/article?id="+n.id+"'>"+n.title+"</a>";
+                        content += " </span>";
+                        content += " <span class='like-3'>"+n.creationtime+"</span>";
+                        content += " <span class='like-4'>"+n.likenum+"喜欢</span>";
+                        content += " </li>";
+                    });
+                    $("#like").html(content);
+                }
+            }
+        })
+    }
+</script>
+<script>
+    $(document).ready(function(){
+        $(document).off('click.bs.dropdown.data-api');
+    });
+</script>
+</body>
+</html>

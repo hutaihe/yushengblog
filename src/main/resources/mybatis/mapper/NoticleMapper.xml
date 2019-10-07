@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.NoticleMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.Noticle" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="access" property="access" jdbcType="INTEGER" />
+        <result column="creationtime" property="creationtime" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="evaluate" property="evaluate" jdbcType="VARCHAR" />
+
+    </resultMap>
+    <!--查询总条数-->
+    <select id="queryCount" resultType="int">
+        select count(*) from t_noticle where status = #{status} ;
+    </select>
+    <!--分页查询-->
+    <select id="queryPageNoticle" resultMap="BaseResultMap">
+        select * from t_noticle where status = #{status} order by creationtime desc limit #{startIndex},#{pagesize};
+    </select>
+    <!--保存文章-->
+    <insert id="saveNoticle">
+        insert into  t_noticle(title,content,access,creationtime,status,evaluate)
+        values(#{title},#{content},#{access},#{creationtime},#{status},#{evaluate})
+    </insert>
+    <!--更新文章状态-->
+    <update id="updateStatus">
+        update t_noticle set status = #{status} where id = #{id}
+    </update>
+    <!--根据id查公告-->
+    <select id="queryNoticleById" resultMap="BaseResultMap">
+        select * from t_noticle where id = #{id}
+    </select>
+    <!--根据id修改公告-->
+    <update id="updateNoticleById">
+        update t_noticle set title = #{title}, content = #{content},status = #{status}, evaluate = #{evaluate}
+        where id = #{id}
+    </update>
+    <!--根据id删除公告-->
+    <delete id="deleteNoticleById">
+        delete from t_noticle where id = #{id}
+    </delete>
+</mapper>

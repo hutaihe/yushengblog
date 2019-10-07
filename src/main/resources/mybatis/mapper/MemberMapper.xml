@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.MemberMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.Member" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="loginacct" property="loginacct" jdbcType="VARCHAR" />
+        <result column="userpswd" property="userpswd" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+        <result column="image" property="image" jdbcType="VARCHAR" />
+        <result column="personalnote" property="personalnote" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="selectEmpById" resultType="com.gdgm.blog.bean.Member">
+        select * from t_member where loginacct = #{loginacct} and userpswd = #{userpswd}
+    </select>
+
+    <select id="queryMemberById" resultMap="BaseResultMap">
+        select * from t_member where id = #{id}
+    </select>
+    <select id="loginMember" resultMap="BaseResultMap">
+        select * from t_member where loginacct = #{loginacct} and userpswd = #{userpswd}
+    </select>
+    <!--修改member-->
+   <update id="updateMember">
+       update t_member set loginacct = #{loginacct},
+                           username = #{username},
+                           email = #{email},
+                           <if test="image != null">
+                               image = #{image},
+                           </if>
+                           personalnote = #{personalnote}
+                        where id = #{id}
+   </update>
+    <!--根据id和密码查询member-->
+    <select id="queryMemberByIdAndPassword" resultMap="BaseResultMap">
+        select * from t_member where id = #{memberid} and userpswd = #{originalpassword}
+    </select>
+    <!--修改密码-->
+    <update id="updatePassword">
+        update t_member set userpswd = #{newpassword} where id = #{memberid}
+    </update>
+    <select id="queryMemberByUserName" resultMap="BaseResultMap">
+        select * from t_member where username = #{username}
+    </select>
+    <select id="queryMemberByEmail" resultMap="BaseResultMap">
+        select * from t_member where email = #{email}
+    </select>
+    <insert id="saveMember" useGeneratedKeys="true" keyProperty="id" parameterType="com.gdgm.blog.bean.Member">
+        insert into t_member(loginacct,userpswd,username,email,createtime,image)
+          values(#{loginacct},#{userpswd},#{username},#{email},#{createtime},#{image})
+    </insert>
+    <select id="queryMemberByLoginacct" resultMap="BaseResultMap">
+         select * from t_member where loginacct = #{loginacct}
+    </select>
+    <!--修改密码-->
+    <select id="updatePasswordByloginacct">
+        update t_member set userpswd = #{code} where loginacct = #{loginacct}
+    </select>
+    <select id="queryMembers" resultMap="BaseResultMap" parameterType="java.util.List">
+        select * from t_member
+        where id in
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

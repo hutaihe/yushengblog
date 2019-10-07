@@ -1,0 +1,123 @@
+body{
+    background: #ECEFF4;
+}
+.container{
+    width: 100%;
+    clear: both;
+    padding-bottom: 20px;
+    margin-top: 15px;
+}
+/*左边*/
+#cleft{
+    background: white;
+    width: 43%;
+    margin-right: 2%;
+    float: left;
+    border-radius: 4px;
+}
+.heared{
+    padding: 10px;
+    height: 40px;
+    border-bottom: 1px solid #ECEFF4;
+}
+h3{
+    font-size: 20px;
+}
+#cateForm{
+    padding: 10px;
+    padding-top: 15px;
+}
+.formgroup{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.formgroup input{
+    width: 100%;
+    padding: 5px;
+}
+.formfoot{
+    width: 100%;
+}
+.formfoot .confirmbtn{
+    background: #3498db;
+    color: white;
+    border:1px solid #ECEFF4 ;
+    font-size: 12px;
+    padding: 7px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline:none;
+}
+.formfoot .confirmbtn:hover{
+    background: #2980b9;
+    color: white;
+    border:1px solid #ECEFF4 ;
+
+}
+.formfoot .updatebtn{
+    background: #3498db;
+    color: white;
+    border:1px solid #ECEFF4 ;
+    font-size: 12px;
+    padding: 7px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline:none;
+}
+.formfoot .updatebtn:hover{
+    background: #2980b9;
+    color: white;
+    border:1px solid #ECEFF4 ;
+
+}
+.formfoot .deletebtn{
+    background: #e74c3c;
+    color: white;
+    border:1px solid #ECEFF4 ;
+    font-size: 12px;
+    padding: 7px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline:none;
+}
+.formfoot .deletebtn:hover{
+    background: #c0392b;
+    color: white;
+    border:1px solid #ECEFF4 ;
+
+}
+.invalid{
+    background: #bdc3c7;
+    color: black;
+    border:1px solid #ECEFF4 ;
+    font-size: 12px;
+    padding: 7px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+/*y右边*/
+#crigth{
+    background: white;
+    width: 55%;
+    float: right;
+    border-radius: 4px;
+}
+#labelContent{
+    padding: 10px;
+    padding-top: 15px;
+}
+#labelContent button{
+    background: #ECEFF4;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-right: 8px;
+}
+#labelContent button:hover{
+    background: #bdc3c7;
+    border: 1px solid #95a5a6;
+}

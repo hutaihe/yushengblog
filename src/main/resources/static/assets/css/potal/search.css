@@ -1,0 +1,113 @@
+
+body{
+    background: #eee;
+}
+/*头部登录链接*/
+.col-lg-12{
+    height: 30px;
+    background: #eee;
+}
+.top{
+    display: block;
+    margin-top: 5px;
+}
+/*大屏幕*/
+@media screen and (min-width:1200px) {
+    .dropdown ul {
+        display: none;
+    }
+    .dropdown:hover ul {
+        display: block;
+    }
+}
+/*导航条字体*/
+.navbar-brand,.navbar-default .navbar-nav>li>a {
+    color: white!important;
+}
+.navbar-nav>.open>a{
+    background-color:#FF6666!important;
+}
+.navbar-nav>.open>a:hover {
+    color: #555;
+    background-color:#FF6666!important;
+}
+.active>a{
+    background-color:#FF6666!important;
+}
+.navbar-nav>li>a:hover{
+     background-color:#FF6666!important;
+ }
+.navbar-nav>li>span{
+    color: white!important;
+    padding: 17px;
+    display: block;
+}
+.navbar-nav>li>span:hover{
+    background-color:#FF6666!important;
+}
+.dropdown-menu{
+    margin: 0px;
+    width: 100px;
+    opacity:0.8;
+}
+.dropdown-menu li{
+    width: 100%!important;
+    height: 40px;
+    border-bottom: 1px solid #bdc3c7;
+
+}
+.dropdown-menu li a{
+    display: block;
+    height: 39px;
+    padding-top: 10px;
+}
+
+#content{
+    min-height: 600px;
+    border: 1px solid #dadada;
+    background: white;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 0px!important;
+    padding-top: 30px!important;
+    padding-bottom: 30px!important;
+    width: 100%;
+}
+#content ul{
+    margin: 0px;
+    padding: 0px;
+}
+#content ul li{
+    list-style: none;
+    float: left;
+    width: 100%;
+    padding:10px 20px;
+    border-bottom: 1px solid #eee;
+}
+#content ul li a{
+    color: #555;
+}
+#content ul li a:hover{
+   text-decoration: none;
+    color: #FF6666;
+    cursor: pointer;
+}
+#content ul li span{
+    float: right;
+}
+#content .pagetile{
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    padding: 5px 20px;
+    font-weight: 600;
+}
+#content p{
+    text-align: center;
+}
+
+/*页脚*/
+.footer{
+    height: 80px;
+    background: #333;
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.ArticleLabelMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.ArticleLabel" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="articleid" property="articleid" jdbcType="INTEGER" />
+        <result column="labelid" property="labelid" jdbcType="INTEGER" />
+    </resultMap>
+
+    <insert id="saveArticleLabe">
+        insert into t_article_label(articleid,labelid)
+        values (#{articleid},#{labelid})
+    </insert>
+    <select id="queryLabelByArticleId" resultType="com.gdgm.blog.bean.Label">
+        select t_label.id,t_label.name from t_label,t_article,t_article_label where
+ t_label.id = t_article_label.labelid and t_article_label.articleid = t_article.id and t_article.id = #{id}
+    </select>
+
+    <select id="queryLabelIdByArticleId" resultType="int">
+        select t_label.id from t_label,t_article,t_article_label where
+ t_label.id = t_article_label.labelid and t_article_label.articleid = t_article.id and t_article.id = #{id}
+    </select>
+    <!--根据artilceid修改label-->
+    <delete id="deletearticleLabel">
+        delete from t_article_label where articleid = #{articleid}
+    </delete>
+
+    <!--查询所有-->
+    <select id="queryAllArticleLabel" resultMap="BaseResultMap">
+        select * from t_article_label;
+    </select>
+    <!--根据labelid删除-->
+    <delete id="deletearticleLabelByLabelid">
+        delete from t_article_label where labelid = #{labelid}
+    </delete>
+
+</mapper>

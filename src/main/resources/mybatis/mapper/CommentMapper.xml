@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.CommentMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.Comment" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="memberid" property="memberid" jdbcType="INTEGER" />
+        <result column="articleid" property="articleid" jdbcType="INTEGER" />
+        <result column="comment" property="comment" jdbcType="VARCHAR" />
+        <result column="pid" property="pid" jdbcType="INTEGER" />
+        <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="ppid" property="ppid" jdbcType="INTEGER" />
+    </resultMap>
+    <select id="queryComment" resultType="com.gdgm.blog.common.result.CommentResult">
+      select
+            t_comment.id,
+            t_comment.comment,
+            t_comment.pid,
+            t_comment.createtime,
+            t_comment.status,
+            t_comment.articleid,
+            t_member.username
+      from t_comment,t_member
+      where articleid in(select id from t_article where memberid =#{id})
+      and pid is null
+      and t_comment.memberid = t_member.id and t_comment.status = #{status} limit #{pageno},#{pagesize};
+    </select>
+    <select id="queryCount" resultType="int">
+        select
+           count(*)
+      from t_comment,t_member
+      where articleid in(select id from t_article where memberid =#{id})
+      and pid is null
+      and t_comment.memberid = t_member.id and t_comment.status = #{status};
+    </select>
+
+
+
+    <select id="queryAdminAllCount" resultType="com.gdgm.blog.common.result.CommentResult">
+      select
+            t_comment.id,
+            t_comment.comment,
+            t_comment.pid,
+            t_comment.createtime,
+            t_comment.status,
+            t_comment.articleid,
+            t_member.username
+      from t_comment,t_member
+      where articleid in(select id from t_article)
+      and pid is null
+      and t_comment.memberid = t_member.id and t_comment.status = #{status} limit #{pageno},#{pagesize};
+    </select>
+    <select id="queryAdminCount" resultType="int">
+        select
+           count(*)
+      from t_comment,t_member
+      where articleid in(select id from t_article)
+      and pid is null
+      and t_comment.memberid = t_member.id and t_comment.status = #{status};
+    </select>
+    <!--根据文章id和状态查询评论-->
+    <select id="quyerCommentDetail" resultType="com.gdgm.blog.common.result.CommentResult">
+       select
+          t_comment.id,
+          t_comment.comment,
+          t_comment.pid,
+          t_comment.createtime,
+          t_comment.articleid,
+          t_comment.ppid,
+          t_member.username
+      from
+          t_comment,t_member
+      where t_comment.memberid=t_member.id
+      and t_comment.articleid = #{articleid}
+      and t_comment.status = '1'
+      and t_comment.ppid = #{id};
+    </select>
+    <!--根据id查询评论-->
+    <select id="quyerCommentById" resultType="com.gdgm.blog.common.result.CommentResult">
+      select
+            t_comment.id,
+            t_comment.articleid,
+            t_comment.pid,
+            t_comment.ppid,
+            t_member.username,
+            t_comment.comment,
+            t_comment.createtime
+      from
+            t_comment,t_member
+      where
+            t_comment.memberid = t_member.id
+      and t_comment.id = #{id}
+    </select>
+    <!--保存评论-->
+    <insert id="saveComment" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into  t_comment(memberid,comment,articleid,pid,createtime,status,ppid)
+            values(#{memberid},#{comment},#{articleid},#{pid},#{createtime},#{status},#{ppid})
+    </insert>
+    <!--根据id删除评论-->
+    <delete id="deleteComment">
+        delete from t_comment where id = #{id}
+    </delete>
+    <!--根据id修改状态-->
+    <update id="updateStatus">
+        update t_comment set status = #{status} where id = #{id}
+    </update>
+    <!--根据id永久删除-->
+    <delete id="permanentDelete">
+        delete  from t_comment where ppid = #{id}
+    </delete>
+    <!--查询总评论数-->
+    <select id="queryAllCount" resultType="int">
+        select count(*) from t_comment
+    </select>
+    <!--根据用户id查询总评论数-->
+    <select id="queryAllCountByMemberid" resultType="int">
+        select count(*) from t_comment where articleid in (select id from t_article where memberid = #{id})
+    </select>
+    <!--根据文章id查询评论-->
+    <select id="queryCommentByArticleid" resultType="com.gdgm.blog.common.result.CommentResult">
+        select * from t_comment where articleid = #{articleid} and status = '1'
+    </select>
+    <!--根据id修改ppid-->
+    <update id="updatePpid">
+        update t_comment set ppid = #{id} where id = #{id}
+    </update>
+    <!--根据ppid查询评论数-->
+    <select id="queryCountByPpid" resultType="int">
+         select count(*) from t_comment where ppid = #{ppid}
+    </select>
+    <!--根据ppid删除评论-->
+    <delete id="deleteCommentByPpid">
+        delete from t_comment where ppid = #{ppid}
+    </delete>
+</mapper>

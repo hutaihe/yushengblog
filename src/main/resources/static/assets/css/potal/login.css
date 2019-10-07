@@ -1,0 +1,64 @@
+
+#container{
+    width: 500px;
+    border: 1px solid #7f8c8d;
+    margin: auto;
+    padding-bottom: 50px;
+}
+h4{
+    text-align:center;
+    font-size: 25px;
+}
+p{
+    text-align:center;
+    font-size: 10px;
+    color: #7f8c8d;
+}
+p label{
+    font-size: 20px;
+    color: black;
+}
+p input{
+    width: 60%;
+    height: 30px;
+    font-size: 15px;
+    border: 1px solid #e67e22;
+    outline:none;
+    padding-left: 10px;
+}
+p button{
+    width: 63%;
+    height: 30px;
+    background: #e67e22;
+    color: white;
+    border: 1px solid #95a5a6;
+    outline:none;
+
+}
+p button:hover{
+    background: #d35400;
+}
+
+.regist{
+    background: #e67e22;
+    color: white;
+}
+.operation{
+    width: 100%;
+    overflow:hidden;
+    padding-bottom: 10px;
+}
+.operation span{
+    color:  #e67e22;
+    font-size: 15px;
+}
+.operation span a{
+    color:  #e67e22;
+}
+.operation span a:hover{
+    cursor: pointer;
+    color: #d35400;
+}
+p a{
+    color: #7f8c8d;
+}

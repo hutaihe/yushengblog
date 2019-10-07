@@ -1,0 +1,339 @@
+*{
+    font-family:”微软雅黑”
+}
+/*
+最上面那一条
+ */
+#singin{
+    height: 30px;
+    background: #F4F8F9;
+}
+#singin span{
+    line-height: 30px;
+}
+/*
+导航条
+ */
+.navbar {min-height:30px;}
+#nav{
+    width: 100%;
+    height: 80px;
+    background: white;
+    position: absolute;
+}
+#nav-wrap{
+ margin-right:160px;
+}
+.dropbtn {
+    height: 80px;
+    color:black;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    background: white;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float:right;
+
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 200px;
+    border-bottom: 1px solid #ecf0f1;
+}
+.dropdown-content a:hover {
+    background-color:#ecf0f1;
+    opacity: 0.8;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    color: white;
+    width: 200px;
+    z-index: 999;
+  /*  opacity: 0.9;*/
+}
+.dropdown:hover .dropbtn {
+    background-color: black;
+    transition-property:background-color;
+    transition-duration: 0.7s;
+    color: white;
+    /*opacity:0.5;*/
+
+}
+.glyphicon-triangle-bottom{
+    color: #bdc3c7;
+}
+.dropdown:hover .glyphicon-triangle-bottom{
+    color: black;
+}
+.dropbtn span{
+    font-size: 10px;
+    margin-right: 5px;
+}
+/**
+搜索按钮
+ */
+.searchbtn{
+    background: #0e8c8c;
+    border: 0px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    line-height: 30px;
+    padding-left: 7px;
+    margin-top: 25px;
+    margin-left: 10px;
+    color: white;
+    position: absolute;
+}
+.searchbtn:hover{
+    background: black;
+}
+.searchbox{
+    top: 100px;
+    width: 1000px;
+    height: 70px;
+    right: 11px;
+    background: white;
+    position: absolute;
+    display: none;
+}
+#searchtext{
+    border: 1px solid #ecf0f1;
+    margin-top:20px;
+    margin-left: 10%;
+    width: 640px;
+    height: 35px;
+    background: #ecf0f1;
+}
+#sbtn{
+    background: #0e8c8c;
+    width: 150px;
+    height: 34px;
+    border: 1px solid #0e8c8c;
+}
+#container{
+    margin: auto;
+    width: 1000px;
+    margin-top: 130px;
+
+}
+#leftcontrainer{
+    float: left;
+    width: 70%;
+}
+#rigthcontainer{
+    float: right;
+    width: 28%;
+}
+/*
+轮播的样式
+*/
+#myCarousel{
+
+    height: 300px;
+    margin-bottom: 15px;
+}
+/**
+文章内容
+ */
+#content{
+
+}
+#content ul{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    list-style:none;
+
+}
+#content ul li{
+    background: white;
+    height: 170px;
+    margin-bottom: 15px;
+    border:1px solid #ecf0f1;
+    border-radius:4px;
+    padding: 20px;
+}
+h1{
+    margin: 0px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+h1 a{
+    color: black;
+
+}
+h1 a:hover{
+    text-decoration: none;
+}
+/*
+阅读全文
+*/
+
+.entry-more a{
+    color: white;
+    text-decoration: none;
+}
+.entry-more{
+    width: 100px;
+    height: 100px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #0e8c8c;
+    position: relative;
+    left: 370px;
+    bottom: 20px;
+}
+.entry-more:hover{
+    background: #0e8c8c;
+    opacity:0.9;
+}
+/*
+关于本站
+ */
+.panel-body img{
+    border:1px solid #ecf0f1;
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 10px;
+}
+.about-name{
+    font-weight:bold;
+    font-size: 16px;
+    line-height: 40px;
+}
+.about-inf{
+    height: 40px;
+    background: #F5F5F5;
+}
+.about-pn{
+    float: left;
+    width: 50%;
+    height: 40px;
+    padding-left: 50px;
+    line-height: 40px;
+    border-right: 1px solid #bdc3c7;
+}
+.about-cn{
+    float: right;
+    width: 50%;
+    padding-left: 50px;
+    line-height: 40px;
+    height: 40px;
+}
+/*
+网站概括
+*/
+.widget-text ul{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    list-style:none;
+}
+.widget-text ul li{
+    line-height: 30px;
+}
+/*
+阅读榜
+ */
+.panel-body ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.colorred{
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #B71C1C;
+}
+.colorblack{
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #bdc3c7;
+}
+.panel-body ul li{
+    line-height: 30px;
+}
+.panel-body ul li a{
+    color: black;
+}
+.panel-body ul li a:hover{
+    color: #0e8c8c;
+    opacity:0.9;
+    text-decoration: none;
+}
+/*
+热门标签
+*/
+.btncolor {
+    border: 1px solid #bdc3c7;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius:4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    background: white;
+}
+.btncolor:hover{
+    background: #0e8c8c;
+    color: white;
+    text-decoration: none;
+}
+/*
+近期评论
+ */
+
+
+#message a .icon{
+    float: left;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    background: #bdc3c7;
+    padding-top: 5px;
+    color: white;
+}
+#message a:hover .icon{
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    background: #bdc3c7;
+    padding-top: 5px;
+    color: white;
+}
+#message a .comment{
+    font-size: 15px;
+    width:auto;
+    padding-top: 5px;
+    color: black;
+}
+#message a:hover .comment{
+    font-size: 15px;
+    width:auto;
+    padding-top: 5px;
+    color: #0e8c8c;
+    text-decoration: none;
+}

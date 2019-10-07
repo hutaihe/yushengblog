@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdgm.blog.mapper.MemberRoleMapper">
+    <resultMap id="BaseResultMap" type="com.gdgm.blog.bean.MemberRole" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="memberid" property="memberid" jdbcType="INTEGER" />
+        <result column="roleid" property="roleid" jdbcType="INTEGER" />
+    </resultMap>
+    <!--根据memberid查询role-->
+    <select id="queryMemberRoleByMemeberid" resultMap="BaseResultMap">
+        select * from t_member_role where memberid = #{id}
+    </select>
+    <insert id="saveMemberRole">
+        insert into t_member_role(memberid,roleid) values(#{memberid},#{roleid})
+    </insert>
+</mapper>

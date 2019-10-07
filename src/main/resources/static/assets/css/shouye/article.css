@@ -1,0 +1,324 @@
+*{
+    font-family:”微软雅黑”
+}
+/*
+路劲导航
+ */
+#route{
+    margin-top: 85px;
+    /*margin-left: 10%;*/
+   /* margin-left:150px;*/
+    margin-bottom: 5px;
+}
+#route a{
+    color: black;
+    text-decoration: none;
+}
+#route a:hover{
+    color: #0e8c8c;
+
+}
+#leftcontrainer{
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    background: #ecf0f1;
+    padding: 0px;
+}
+/*
+文章头部标签按钮
+ */
+#top{
+    height: 60px;
+    padding-top: 15px;
+    background: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+}
+.topbtn {
+    float: right;
+    border: 1px solid #bdc3c7;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    background: white;
+    border-radius: 4px;
+}
+.topbtn:hover{
+    background: #0e8c8c;
+    color: white;
+    text-decoration: none;
+}
+/*
+文章标题
+*/
+#title{
+    background: #ecf0f1;
+    height: 40px;
+
+}
+#title #span1{
+    width: 1%;
+    height: 40px;
+    display: block;
+    background: #0e8c8c;
+    float: left;
+
+}
+#title #span2{
+
+    float: left;
+    width: 98%;
+    height: 40px;
+    background: #ecf0f1;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+#title #span3{
+    width: 1%;
+    height: 40px;
+    display: block;
+    background: #0e8c8c;
+    float: right;
+}
+/*
+文章内容
+*/
+
+#content{
+    background: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+}
+#content #foot{
+    background: #F8F8F8;
+    height: 50px;
+    padding-left: 10px;
+    padding-top: 15px;
+}
+#content .footbtn1{
+    border: 1px solid #bdc3c7;
+    background: white;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: right;
+    margin-right: 10px;
+}
+#content .footbtn2{
+    border: 1px solid #bdc3c7;
+    background: white;
+    border-radius: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: right;
+    margin-right: 10px;
+}
+#content .footbtn1:hover{
+
+   background: #0e8c8c;
+    color: white;
+}
+#content .footbtn2:hover{
+
+    background: #0e8c8c;
+    color: white;
+}
+/*
+文章标签
+ */
+#label{
+    background: #ecf0f1;
+}
+#label button{
+    background: #0e8c8c;
+    border: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 60px;
+    padding-right: 60px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+/*
+文章转载
+*/
+#affirming{
+    background: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+}
+#affirming #aleft{
+    float: left;
+    width: 10%;
+}
+#affirming #rigth{
+    float: right;
+    width: 90%;
+}
+/*
+推荐文章
+*/
+#recommend{
+    margin-top: 15px;
+    background: white;
+    height: 200px;
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#recommend ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+#recommend ul li{
+    margin-left: 10px;
+    width: 162px;
+    height: 162px;
+    float: left;
+}
+#recommend ul li div{
+   width: 162px;
+    height: 120px;
+    overflow:hidden;
+    border-radius: 3px
+}
+#recommend ul li img{
+    transition: all 0.6s;
+    width: 162px;
+    height: 120px;
+}
+#recommend ul li img:hover{
+    transform: scale(1.4);
+}
+/*
+上下篇
+ */
+
+#topandbottom{
+    margin-top: 15px;
+    background: white;
+    height: 80px;
+}
+
+#topandbottom{
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+
+}
+#topandbottom #topbtn{
+    float: left;
+    width: 50%;
+    line-height: 80px;
+    text-align: center;
+    border-right: 1px solid #ecf0f1;
+    transition: all 0.8s;
+}
+#topandbottom #topbtn:hover{
+    float: left;
+    width: 50%;
+    line-height: 80px;
+    text-align: center;
+    border-right: 1px solid #ecf0f1;
+    color: white;
+    background: #0e8c8c;
+    transition-property:background-color;
+    transition-duration: 0.7s;
+}
+#topandbottom #bottombtn{
+    float: left;
+    width: 50%;
+    line-height: 80px;
+    text-align: center;
+    transition: all 0.8s;
+}
+#topandbottom #bottombtn:hover{
+    float: left;
+    width: 50%;
+    line-height: 80px;
+    text-align: center;
+    background: #0e8c8c;
+    color: white;
+    transition-property:background-color;
+    transition-duration: 0.7s;
+}
+/*
+发表评论
+ */
+#comments{
+    padding: 15px;
+    background: white;
+    margin-top: 15px;
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+}
+#comments textarea{
+    width: 670px;
+    height: 60px;
+}
+#comments label{
+    border: 1px solid #bdc3c7;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #ecf0f1;
+}
+#comments input{
+    border: 1px solid #bdc3c7;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#comments button{
+    background: white;
+    border: 1px solid #bdc3c7;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: 336px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: all 0.8s;
+}
+#comments button:hover{
+    background: #0e8c8c;
+    border: 1px solid #bdc3c7;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: 336px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition-property:background-color;
+    transition-duration: 0.9s;
+    color: white;
+}
+#comments input{
+    margin-top: 10px;
+}
+#comments button{
+    margin-top: 10px;
+}
+#currentcomments{
+    margin-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    background: white;
+    border: 1px solid #bdc3c7;
+    border-radius: 3px;
+}
