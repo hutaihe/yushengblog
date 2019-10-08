@@ -105,7 +105,9 @@ body{
 #content p{
     text-align: center;
 }
-
+.pagination{
+    margin-bottom: 20px;
+ }
 /*页脚*/
 .footer{
     height: 80px;
