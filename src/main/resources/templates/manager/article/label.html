@@ -234,21 +234,26 @@
     }
     //删除
     function deleteLabel(){
-        var labelid = $("#labelid").val();
-        $.ajax({
-            type : "post",
-            url : "/manager/article/deleteLabel",
-            data : {
-                "id" : labelid,
-            },
-            success : function(result){
-                if(result.success){
-                    window.location.href="/manager/article/toLabel";
-                }else{
-                    layer.msg(result.message, {time:1000, icon:5, shift:6});
+        layer.confirm("确定要删除吗?",  {icon: 3, title:'提示'}, function(cindex){
+            var labelid = $("#labelid").val();
+            $.ajax({
+                type : "post",
+                url : "/manager/article/deleteLabel",
+                data : {
+                    "id" : labelid,
+                },
+                success : function(result){
+                    if(result.success){
+                        window.location.href="/manager/article/toLabel";
+                    }else{
+                        layer.msg(result.message, {time:1000, icon:5, shift:6});
+                    }
                 }
-            }
 
+            });
+            layer.close(cindex);
+        }, function(cindex){
+            layer.close(cindex);
         });
     }
 

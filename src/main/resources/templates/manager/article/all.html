@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>个人博客 | 所有文章</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -33,7 +33,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <link href="/assets/css/lib/bootstrap.min.css" rel="stylesheet">
-    <link th:href="@{/assets/css/main/all.css}" rel="stylesheet">
+    <link href="/assets/css/main/all.css" rel="stylesheet">
 
 </head>
 <body class="skin-blue sidebar-mini">
@@ -58,9 +58,9 @@
             <div id="top">
                 <ul>
                     <li onclick="showtab1()">已发布|</li>
-                    <li onclick="showtab2()">待审核(1)&nbsp;|</li>
-                    <li onclick="showtab3()">草稿(2)&nbsp;|</li>
-                    <li onclick="showtab4()">回收站(3)</li>
+                    <li onclick="showtab2()">待审核&nbsp;|</li>
+                    <li onclick="showtab3()">草稿&nbsp;|</li>
+                    <li onclick="showtab4()">回收站</li>
                 </ul>
             </div>
             <div id="tab1">
@@ -321,55 +321,66 @@
                 if(result.success){
                     var page = result.page;
                     var datas = page.articleResults;
-                    var content = "";
-                    $.each(datas,function(i,n){
-                        content += "<tr>";
-                        content += "<td>"+n.title+"</td>";
-                        content += "<td>"+n.username+"</td>";
-                        content += "<td>"+n.typenames+"</td>";
-                        content += "<td>"+n.labelnames+"</td>";
-                        content += "<td>"+n.comment+"</td>";
-                        content += "<td>"+n.access+"</td>";
-                        content += "<td>"+n.creationtime+"</td>";
-                        if(data == 0){
-                            content += "<td id='tranbtn'><a class='a1' id='editbtn' onclick='window.location.href=\"/manager/article/edit?id="+n.id+"\"'>编辑</a><a class='a2' onclick='release("+n.id+")'>发布</a><a class='a3' onclick='discard("+n.id+")'>丢弃</a></td>";
-                        }
-                        if(data == 1){
-                            content += "<td id='tranbtn'><a class='a1' id='editbtn' onclick='window.location.href=\"/manager/article/edit?id="+n.id+"\"'>编辑</a><a class='a3' onclick='discard("+n.id+")'>丢弃</a></td>";
-                        }
-                        if(data == 2){
-                            content += "<td id='tranbtn'><a class='a1'>编辑</a><a class='a3'>下架</a></td>";
-                        }
-                        if(data == 3){
-                            content += "<td id='tranbtn'><a class='a1' onclick='reduction("+n.id+")'>还原</a><a class='a3' onclick='destruction("+n.id+")'>永久销毁</a></td>";
-                        }
+                    if(datas != null){
+                        var content = "";
+                        $.each(datas,function(i,n){
+                            content += "<tr>";
+                            content += "<td>"+n.title+"</td>";
+                            content += "<td>"+n.username+"</td>";
+                            content += "<td>"+n.typenames+"</td>";
+                            content += "<td>"+n.labelnames+"</td>";
+                            content += "<td>"+n.comnum+"</td>";
+                            content += "<td>"+n.access+"</td>";
+                            content += "<td>"+n.creationtime+"</td>";
+                            if(data == 0){
+                                content += "<td id='tranbtn'><button class='a1' id='editbtn' onclick='window.location.href=\"/manager/article/edit?id="+n.id+"\"'>编辑</button><button class='a2' onclick='release("+n.id+")'>发布</button><button class='a3' onclick='discard("+n.id+")'>丢弃</button></td>";
+                            }
+                            if(data == 1){
+                                content += "<td id='tranbtn'><button class='a4' onclick='upperShelf("+n.id+")'>上架</button><button class='a1' id='editbtn' onclick='window.location.href=\"/manager/article/edit?id="+n.id+"\"'>编辑</button><button class='a3' onclick='discard("+n.id+")'>丢弃</button></td>";
+                            }
+                            if(data == 2){
+                                content += "<td id='tranbtn'><button class='a1' onclick='lowerShelf("+n.id+")'>下架</button><button class='a3' onclick='discard("+n.id+")'>丢弃</button></td>";
+                            }
+                            if(data == 3){
+                                content += "<td id='tranbtn'><button class='a1' onclick='reduction("+n.id+")'>还原</button><button class='a3' onclick='destruction("+n.id+")'>永久销毁</button></td>";
+                            }
 
+                            content += "</tr>";
+                        });
+                        var a = "#data"+data; //拼接一个id
+                        var b = ".data"+data;//拼接一个class
+                        $(".table "+a).html(content);
+                        var fcontent = "";
+                        fcontent += "<li onclick='loadData("+data+","+5+","+1+")'>首页</li>";
+                        if(page.pageno == 1){
+                            fcontent += "<li onclick='loadData("+data+","+5+","+1+")'>上一页</li>";
+                        }else{
+                            fcontent += "<li onclick='loadData("+data+","+5+","+(page.pageno-1)+")'>上一页</li>";
+                        }
+                        if(page.pageno == page.totalno){
+                            fcontent += "<li onclick='loadData("+data+","+5+","+page.totalno+")'>下一页</li>";
+                        }else{
+                            fcontent += "<li onclick='loadData("+data+","+5+","+(page.pageno+1)+")'>下一页</li>";
+                        }
+                        var tcontent = "第"+page.pageno+" /"+page.totalno+"页";
+                        $(b+" .tleft").html(tcontent);
+                        /*分页栏*/
+                        fcontent += "<li onclick='loadData("+data+","+5+","+page.totalno+")'>尾页</li>";
+
+                        $(b+" .hfoot").html(fcontent);
+                    }
+                    else{
+                        var a = "#data"+data; //拼接一个id
+                        var b = ".data"+data;//拼接一个class
+                        var content ="<tr>";
+                        content += "<td colspan='8' style='text-align: center'>暂无数据</td>";
                         content += "</tr>";
-                    });
-                    var a = "#data"+data; //拼接一个id
-                    var b = ".data"+data;//拼接一个class
-                    $(".table "+a).html(content);
-                    var fcontent = "";
-                    fcontent += "<li onclick='loadData("+data+","+5+","+1+")'>首页</li>";
-                    if(page.pageno == 1){
-                        fcontent += "<li onclick='loadData("+data+","+5+","+1+")'>上一页</li>";
-                    }else{
-                        fcontent += "<li onclick='loadData("+data+","+5+","+(page.pageno-1)+")'>上一页</li>";
+                        $(".table "+a).html(content);
                     }
-                    if(page.pageno == page.totalno){
-                        fcontent += "<li onclick='loadData("+data+","+5+","+page.totalno+")'>下一页</li>";
-                    }else{
-                        fcontent += "<li onclick='loadData("+data+","+5+","+(page.pageno+1)+")'>下一页</li>";
-                    }
-                    var tcontent = "第"+page.pageno+" /"+page.totalno+"页";
-                    $(b+" .tleft").html(tcontent);
-                    /*分页栏*/
-                    fcontent += "<li onclick='loadData("+data+","+5+","+page.totalno+")'>尾页</li>";
 
-                    $(b+" .hfoot").html(fcontent);
                 }
                 else{
-                    layer.msg(result.message, {time:1000, icon:5, shift:6});
+                     layer.msg(result.message, {time:1000, icon:5, shift:6});
                 }
             }
         })
@@ -435,7 +446,7 @@
             success : function(result){
                 if(result.success){
                     layer.msg("还原文章成功！", {time:2000, icon:6});
-                    showtab4();
+                    showtab3();
                 }else{
                     layer.msg("还原文章失败！", {time:2000, icon:5,shift:6});
                 }
@@ -466,6 +477,54 @@
         });
 
 
+    }
+    //下架
+    function lowerShelf(id){
+        layer.confirm("确定要下架吗?",  {icon: 3, title:'提示'}, function(cindex){
+            $.ajax({
+                type : "post",
+                url : "/manager/article/lowerShelf",
+                data : {
+                    "id" : id,
+                    "status" : "1",
+                },
+                success : function(result){
+                    if(result.success){
+                        layer.msg("下架文章成功！", {time:2000, icon:6});
+                        showtab2();
+                    }else{
+                        layer.msg("下架文章失败！", {time:2000, icon:5,shift:6});
+                    }
+                }
+            });
+            layer.close(cindex);
+        }, function(cindex){
+            layer.close(cindex);
+        });
+    }
+    //上架
+    function  upperShelf(id){
+        layer.confirm("确定要上架吗?",  {icon: 3, title:'提示'}, function(cindex){
+            $.ajax({
+                type : "post",
+                url : "/manager/article/upperShelf",
+                data : {
+                    "id" : id,
+                    "status" : "2",
+                },
+                success : function(result){
+                    if(result.success){
+                        layer.msg("上架文章成功！", {time:2000, icon:6});
+                        showtab1();
+                    }else{
+                        layer.msg(result.message, {time:2000, icon:5,shift:6});
+                    }
+                }
+            });
+            layer.close(cindex);
+        }, function(cindex){
+            layer.close(cindex);
+        });
     }
     //获取请求地址的参数
     function GetQueryString(name)

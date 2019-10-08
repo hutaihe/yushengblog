@@ -33,4 +33,8 @@
     <select id="queryAllCount" resultType="int">
         select count(*) from t_picture
     </select>
+    <!--查询数据库第一张图片-->
+    <select id="selectOnePicture" resultType ="int">
+        select id from t_picture limit 1
+    </select>
 </mapper>

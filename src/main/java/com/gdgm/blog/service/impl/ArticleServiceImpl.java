@@ -32,6 +32,10 @@ public class ArticleServiceImpl implements ArticleService {
     private PictureService pictureService;
     @Autowired
     private  MemberService memberService;
+    @Autowired
+    private TypeService typeService;
+    @Autowired
+    private LabelService labelService;
     @Override
     public Integer queryAllCount() {
         return articleMapper.queryAllCount();
@@ -73,8 +77,10 @@ public class ArticleServiceImpl implements ArticleService {
             articleResult.setAccess(article.getAccess()); //访问量
             articleResult.setCreationtime(article.getCreationtime());//创建时间
             articleResult.setTitle(article.getTitle()); //文章标题
+            articleResult.setComnum(article.getComnum()); //文章评论
             articleResult.setUsername(member.getUsername()); //作者
             List<Type> typeList = articleTypeService.queryTypeByArticleId(article.getId());
+
             StringBuilder typenames = new StringBuilder(); //分类目录
             for(Type type : typeList){
                 typenames.append(type.getName()+" ");
@@ -129,9 +135,9 @@ public class ArticleServiceImpl implements ArticleService {
         //如果没有选择标签默认未没标签
         if(articleVo.getLabelids() == null){
             List<Integer> labelids = new ArrayList<>();
-            labelids.add(39);
+            Label label = labelService.queryLabelByName("其他");
+            labelids.add(label.getId());
             articleVo.setLabelids(labelids);
-
         }
         articleLabelService.deletearticleLabel(article.getId());
         for (Integer labelid : articleVo.getLabelids()){
@@ -178,8 +184,10 @@ public class ArticleServiceImpl implements ArticleService {
         article.setType(articleVo.getType()); //文章类型
         article.setEvaluate(articleVo.getEvaluate()); //是否评论
         article.setStatus(articleVo.getStatus());
+        //如果没有选则缩略图，就取数据库中的第一张图片
         if(articleVo.getPid() == null){
-            articleVo.setPid(28);
+            Integer id = pictureService.selectOnePicture();
+            articleVo.setPid(id);
         }
         article.setPid(articleVo.getPid());
         article.setAccess(0);
@@ -187,17 +195,17 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.saveArticle(article);
         //保存文章分类
         int total1=0;
-        //如果没有选择分类默认未分类
+        //如果没有选择分类默认是其他
         if(articleVo.getTypeids() == null){
             List<Integer> typeids = new ArrayList<>();
-            typeids.add(63);
+            Type type = typeService.queryTypeByName("其他");
+            typeids.add(type.getId());
             articleVo.setTypeids(typeids);
         }
         for(Integer typeid : articleVo.getTypeids()){
            int count =  articleTypeService.saveArticleType(article.getId(),typeid);
             total1 += count;
         }
-
         //保存文章标签
         int total2=0;
         //如果没有选择标签默认未没标签

@@ -1,12 +1,12 @@
 package com.gdgm.blog.controller.manager.article;
 
 import com.gdgm.blog.bean.Member;
+import com.gdgm.blog.bean.MemberRole;
+import com.gdgm.blog.bean.Role;
 import com.gdgm.blog.common.result.ArticleResult;
 import com.gdgm.blog.common.util.AjaxResult;
 import com.gdgm.blog.common.util.Page;
-import com.gdgm.blog.service.ArticleLabelService;
-import com.gdgm.blog.service.ArticleService;
-import com.gdgm.blog.service.ArticleTypeService;
+import com.gdgm.blog.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +27,8 @@ public class AllArticleController {
     private ArticleTypeService articleTypeService;
     @Autowired
     private ArticleLabelService articleLabelService;
+    @Autowired
+    private RoleService roleService ;
     @RequestMapping("toAll")
    public String toIndex(HttpSession session,Map<String ,Integer> map){
 
@@ -42,8 +44,9 @@ public class AllArticleController {
         try {
             Member member =(Member)session.getAttribute("member");
             Page page = articleService.queryPageArticle(member,pageno,pagesize,data);
-            result.setSuccess(true);
             result.setPage(page);
+            result.setSuccess(true);
+
         }catch (Exception e){
             e.printStackTrace();
             result.setMessage("加载数据失败！");
@@ -117,6 +120,43 @@ public class AllArticleController {
         }
         return result;
     }
+    //下架
+    @RequestMapping("/lowerShelf")
+    @ResponseBody
+    public Object lowerShelf(Integer id,String status){
+        AjaxResult result = new AjaxResult();
+        try {
+            int count = articleService.updateStatusById(id,status);
+            result.setSuccess(count == 1);
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setSuccess(false);
+            result.setMessage("下架文章失败！");
+        }
+        return result;
+    }
+    //上架
+    @RequestMapping("/upperShelf")
+    @ResponseBody
+    public Object upperShelf(Integer id,String status,HttpSession session){
+        AjaxResult result = new AjaxResult();
+        try {
+            Member member = (Member)session.getAttribute("member");
+            Role role = roleService.queryRoleByMemberid(member.getId());
+            if(role.getName().equals("管理员")){
+                int count = articleService.updateStatusById(id,status);
+                result.setSuccess(count == 1);
+            }else{
+                result.setSuccess(false);
+                result.setMessage("你没有权限上架文章！");
+            }
 
+        }catch (Exception e){
+            e.printStackTrace();
+            result.setSuccess(false);
+            result.setMessage("操作失败！");
+        }
+        return result;
+    }
 }
 

@@ -19,4 +19,6 @@ public interface PictureService {
     Integer queryAllCount();
 
     Integer queryAllCountByMemberid(Integer id);
+
+    Integer selectOnePicture();
 }

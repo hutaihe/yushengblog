@@ -48,4 +48,9 @@ public class PictureServiceImpl implements PictureService {
     public List<Picture> queryAllPictureByIconpath(String iconpath) {
         return pictureMapper.queryAllPictureByIconpath(iconpath);
     }
+
+    @Override
+    public Integer selectOnePicture() {
+        return pictureMapper.selectOnePicture();
+    }
 }

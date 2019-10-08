@@ -19,4 +19,6 @@ public interface PictureMapper {
     Integer queryAllCount();
 
     Integer queryAllCountByMemberid(Integer id);
+
+    Integer selectOnePicture();
 }

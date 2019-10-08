@@ -100,26 +100,35 @@
 }
 /*操作的按钮*/
 #tranbtn a{
-    color: black;
-    font-size: 15px;
-    padding: 0px;
-    float: left;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 3px;
-    border-radius: 4px;
     color: white;
+    background: #3498db;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    float: left;
+    font-size: 10px;
+    margin-right: 10px;
+}
+#tranbtn button{
+    color: white;
+    border-radius: 4px;
+    float: left;
+    font-size: 10px;
+    margin-right: 10px;
+    outline:none;
 }
 #tranbtn .a1{
-   background: #0d71bb;
+    background: #0d71bb;
+    border: 1px solid #0d71bb;
 }
 #tranbtn .a2{
     background: #0E566C;
+    border: 1px solid #0E566C;
 }
 #tranbtn .a3{
-    background: red;
+    background: #FF6666;
+    border: 1px solid #FF6666;
 }
-#tranbtn a:hover{
-    opacity: 0.8;
-    cursor: pointer;
+#tranbtn .a4{
+    background: #16a085;
+    border: 1px solid #16a085;
 }
