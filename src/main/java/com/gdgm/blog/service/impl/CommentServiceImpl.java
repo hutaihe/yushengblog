@@ -106,4 +106,19 @@ public class CommentServiceImpl implements CommentService {
     public void deleteCommentByPpid(Integer ppid) {
         commentMapper.deleteCommentByPpid(ppid);
     }
+
+    @Override
+    public void deleteCommentByArticleIds(List<Integer> ids) {
+        commentMapper.deleteCommentByArticleIds(ids);
+    }
+
+    @Override
+    public void deleteCommentByMemberId(Integer id) {
+        commentMapper.deleteCommentByMemberId(id);
+    }
+
+    @Override
+    public List<Integer> quyerCommentByMemberid(Integer id) {
+        return commentMapper.quyerCommentByMemberid(id);
+    }
 }

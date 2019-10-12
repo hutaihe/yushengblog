@@ -78,7 +78,9 @@ public class ArticleServiceImpl implements ArticleService {
             articleResult.setCreationtime(article.getCreationtime());//创建时间
             articleResult.setTitle(article.getTitle()); //文章标题
             articleResult.setComnum(article.getComnum()); //文章评论
-            articleResult.setUsername(member.getUsername()); //作者
+            //查询作者
+            String username = memberService.queryMemberByArticleId(article.getMemberid());
+            articleResult.setUsername(username); //作者
             List<Type> typeList = articleTypeService.queryTypeByArticleId(article.getId());
 
             StringBuilder typenames = new StringBuilder(); //分类目录
@@ -483,5 +485,15 @@ public class ArticleServiceImpl implements ArticleService {
         List<ArticleResult> articleResults = articleMapper.queryPageByKeyCoke(page.getStartIndex(),pagesize,keycode);
         page.setArticleResults(articleResults);
         return page;
+    }
+
+    @Override
+    public List<Integer> queryIdsByMemberid(Integer id) {
+        return articleMapper.queryIdsByMemberid(id);
+    }
+
+    @Override
+    public void deleteArticleByMemberId(Integer id) {
+        articleMapper.deleteArticleByMemberId(id);
     }
 }

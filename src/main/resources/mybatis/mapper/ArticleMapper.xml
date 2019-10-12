@@ -146,4 +146,12 @@
     <select id="queryPageByKeyCoke" resultType="com.gdgm.blog.common.result.ArticleResult">
         select * from t_article where  title like concat("%",#{keycode},"%") and status = '2' limit #{startIndex},#{pagesize}
     </select>
+    <!--根据memberid查询文章id-->
+    <select id="queryIdsByMemberid" resultType="int">
+        select id from t_article where memberid = #{id}
+    </select>
+    <!--根据用户id删除文章-->
+    <delete id="deleteArticleByMemberId">
+        delete from t_article where memberid = #{id}
+    </delete>
 </mapper>

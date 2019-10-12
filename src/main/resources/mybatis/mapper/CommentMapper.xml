@@ -134,4 +134,20 @@
     <delete id="deleteCommentByPpid">
         delete from t_comment where ppid = #{ppid}
     </delete>
+    <!--根据文章删除评论-->
+    <delete id="deleteCommentByArticleIds" parameterType="int">
+        delete from t_comment where
+        articleid in
+        <foreach collection="list" item="item" separator="," open="(" close =")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--根据用户id删除评论-->
+    <delete id="deleteCommentByMemberId">
+        delete from t_comment where memberid = #{id}
+    </delete>
+    <!--根据memberid查询-->
+    <select id="quyerCommentByMemberid" resultType="int">
+        select id from t_comment where memberid = #{id}
+    </select>
 </mapper>

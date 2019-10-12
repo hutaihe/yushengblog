@@ -9,4 +9,8 @@ public interface MemberRoleMapper {
     MemberRole queryMemberRoleByMemeberid(Integer id);
 
     void saveMemberRole(@Param("memberid") Integer memberid, @Param("roleid")Integer roleid);
+
+    Integer updateMemberRoleByMemberid(@Param("memberid")Integer memberid, @Param("roleid") Integer roleid);
+
+    void deleteMemberRoleByMemberid(Integer id);
 }

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IT博客 | 用户维护</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/css/main/usermanagement.css" rel="stylesheet">
+
+</head>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
+    <div th:insert="~{main :: menu}"></div>
+    <div th:insert="~{main :: top}"></div>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                用户维护
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li class="active">用户</li>
+                <li class="active">用户维护</li>
+            </ol>
+        </section>
+        <div class="container" >
+            <div class="panel panel-default" id="panel1">
+                <div class="panel-heading" style="background: white"><span class="glyphicon glyphicon-th"></span>用户列表</div>
+                <div class="panel-body">
+                    <div id="search">
+                        <form class="form-inline" style="float:left;">
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <div class="input-group-addon">查询条件</div>
+                                    <input class="form-control has-success" type="text" placeholder="请输入查询条件" name="keycode" id="keycode">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-warning" onclick="search()"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        </form>
+                        <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><i class=" glyphicon glyphicon-remove"></i> 删除</button>
+                        <button type="button" class="btn btn-primary" style="float:right;" onclick="addBtn()"><i class="glyphicon glyphicon-plus"></i> 新增</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="2%">#</th>
+                                <th width="21%">账号</th>
+                                <th width="21%">名称</th>
+                                <th width="21%">邮箱地址</th>
+                                <th width="21">创建时间</th>
+                                <th width="14%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" id="panel2" style="display: none">
+                <div class="panel-heading" style="background: white"><span class="glyphicon glyphicon-user"></span>添加用户
+                    <button type="button" class="btn btn-danger" style="float:right;padding: 2px" onclick="unadd()"><i class=" glyphicon glyphicon-remove"></i>取消添加</button>
+                </div>
+                <div class="panel-body">
+                    <div class="formgroup">
+                        <label>账号:</label>
+                        <input type="text" id="floginacct" name="loginacct">
+                    </div>
+                    <div class="formgroup">
+                        <label>用户名:</label>
+                        <input type="text" id="fusername" name="username">
+                    </div>
+                    <div class="formgroup">
+                        <label>邮箱:</label>
+                        <input type="text" id="femail" name="email">
+                    </div>
+                    <div class="formgroup">
+                        <label>密码:</label>
+                        <input type="password" id="fuserpswd1" name="fuserpswd1">
+                    </div>
+                    <div class="formgroup">
+                        <label>确认密码:</label>
+                        <input type="password" id="fuserpswd2" name="fuserpswd2">
+                    </div>
+
+                    <div class="formgroup">
+                        <button type="button" class="btn btn-primary" style="float:left;margin-right:10px;" onclick="add()"><i class="glyphicon glyphicon-plus"></i> 新增</button>
+                        <button type="button" class="btn btn-danger" style="float:left;" onclick="clearText()"><i class=" glyphicon glyphicon-remove"></i>清空</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" id="panel3" style="display: none">
+                <div class="panel-heading" style="background: white"><span class="glyphicon glyphicon-pencil"></span>修改用户
+                    <button type="button" class="btn btn-primary" style="float:right;padding: 2px" onclick="goback()"><i class="glyphicon glyphicon-log-out"></i>返回</button>
+                </div>
+                <div class="panel-body">
+                    <div class="formgroup">
+                        <label>账号:</label>
+                        <input type="text" id="uloginacct" name="loginacct" readonly>
+                    </div>
+                    <div class="formgroup">
+                        <label>用户名:</label>
+                        <input type="text" id="uusername" name="username">
+                    </div>
+                    <div class="formgroup">
+                        <label>邮箱:</label>
+                        <input type="text" id="uemail" name="email">
+                    </div>
+                    <div class="formgroup">
+                        <button type="button" class='btn btn btn-success' style="float:left;margin-right:10px;" onclick="update()"><i class="glyphicon glyphicon-pencil"></i> 修改</button>
+                        <button type="button" class="btn btn-danger" style="float:left;" onclick="reductionBtn()"><i class=" glyphicon glyphicon-remove"></i>还原</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.2.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    </footer>
+    <div class="control-sidebar-bg"></div>
+</div>
+
+<!-- jQuery 2.1.4 -->
+<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/app.min.js" type="text/javascript"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/dist/js/pages/dashboard.js" type="text/javascript"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js" type="text/javascript"></script>
+<script src="/layer/layer.js"></script>
+<script>
+    window.onload = function(){
+        var jsonObj = {};
+        jsonObj.pageno = 1;
+        jsonObj.pagesize = 10;
+        jsonObj.keycode = null;
+        loadUser(jsonObj)
+    }
+    function loadUser(jsonObj){
+        $.ajax({
+            type : "post",
+            url : "/manager/user/loadUser",
+            data : jsonObj,
+            success : function(result){
+                if(result.success){
+                    var data = result.page.memberList;
+                    var content = "";
+                    var paging = "";
+                    $.each(data,function(i,n){
+                        content += "<tr>";
+                        content += "<td>"+(i+1)+"</td>";
+                        content += "<td>"+n.loginacct+"</td>";
+                        content += "<td>"+n.username+"</td>";
+                        content += "<td>"+n.email+"</td>";
+                        content += "<td>"+n.createtime+"</td>";
+                        content += "<td>";
+                        content += " <button class='btn btn btn-success' onclick='updateBtn("+n.id+")'>修改</button>";
+                       /* content += "<button class='btn btn-primary'>修改</button>";*/
+       /*                 content += "<button class='btn btn-danger' onclick='deleteUser("+n.id+",\'"+n.username+"\')> 删除</button>";*/
+                        content += '<button class="btn btn-danger" onclick="deleteUser(' + n.id + ',\'' + n.username + '\')">删除</button>';
+                        content += "</td>";
+                        content += "</tr>";
+
+                    });
+                    //拼接分页
+                    paging += "<tr>";
+                    paging += " <td colspan='5' align='center'>";
+                    paging += " <ul class='pagination'>";
+                    if(result.page.pageno == 1){
+                        paging += " <li class='disabled'><a >上一页</a></li>";
+                    }else{
+                        paging += " <li><a onclick='paging("+(result.page.pageno-1)+")' '>上一页</a></li>";
+                    }
+                    for( i = 1 ; i <= result.page.totalno ; i++){
+                        paging += "<li";
+                        if(i == result.page.pageno){
+                            paging += " class='active'";
+                        }
+                        paging += ">";
+                        paging += " <a href='#' onclick='paging("+i+")'>"+i+" <span class='sr-only'>(current)</span></a></li>";
+                    }
+                    if(result.page.pageno == result.page.totalno){
+                        paging += " <li class='disabled'><a href='#'>下一页</a></li>";
+                    }else{
+                        paging += " <li><a onclick='paging("+(result.page.pageno+1)+")'>下一页</a></li>";
+                    }
+                    paging += "</ul>";
+                    paging += "</td>";
+                    paging += "</tr>";
+
+                    $("tbody").html(content);
+                    $("tfoot").html(paging);
+                }else{
+                    var content = "<tr>";
+                    content += "<td colspan='6' align='center'>";
+                    content += "暂无数据";
+                    content += "</td>";
+                    content += "</tr>";
+                    $("tbody").html(content);
+                    layer.msg(result.message, {time:1000, icon:5, shift:6});
+                }
+            }
+        })
+    }
+    function paging(pageno){
+        var jsonObj = {};
+        jsonObj.pageno = pageno;
+        jsonObj.pagesize = 10;
+        loadUser(jsonObj);
+    }
+    //查询
+    function search(){
+        var keycode = $("#keycode").val();
+        var jsonObj = {};
+        jsonObj.pageno = 1;
+        jsonObj.pagesize = 10;
+        jsonObj.keycode = keycode;
+        loadUser(jsonObj);
+    }
+    //点击添加按钮
+    function addBtn(){
+        $("#panel1").hide();
+        $("#panel2").show();
+        $("#floginacct").focus();
+    }
+    //添加用户
+    function add(){
+        var floginacct = $("#floginacct");
+        var fusername = $("#fusername");
+        var femail = $("#femail");
+        var fuserpswd1 = $("#fuserpswd1");
+        var fuserpswd2 = $("#fuserpswd2");
+        var myreg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+        if(floginacct.val() == ""){
+            layer.msg("请输入登录账号！", {time:1500, icon:5, shift:6});
+            floginacct.focus();
+            return false;
+        }else{
+            if(floginacct.val().length >18){
+                layer.msg("登录账号过长，请重新输入！", {time:1500, icon:5, shift:6});
+                floginacct.val("");
+                floginacct.focus();
+                return false;
+            }
+        }
+        if(fusername.val() == ""){
+            layer.msg("请输入昵称！", {time:1500, icon:5, shift:6});
+            fusername.focus();
+            return false;
+        }
+        if(femail.val() == ""){
+            layer.msg("请输入邮箱！", {time:1500, icon:5, shift:6});
+            femail.focus();
+            return false;
+        }else{
+            if(!myreg.test(femail.val())){
+                layer.msg("邮件格式不正确，请输入正确的邮箱！", {time:1500, icon:5, shift:6});
+                femail.val("");
+                femail.focus();
+                return false;
+            }
+        }
+        if(fuserpswd1.val() == ""){
+            layer.msg("请输入登录密码！", {time:1500, icon:5, shift:6});
+            fuserpswd1.focus();
+            return false;
+        }
+        if(fuserpswd2.val() == ""){
+            layer.msg("请确认密码！", {time:1500, icon:5, shift:6});
+            fuserpswd2.focus();
+            return false;
+        }else{
+            if(fuserpswd1.val() != fuserpswd2.val()){
+                layer.msg("两次密码不一致，请重新确认密码！", {time:1500, icon:5, shift:6});
+                fuserpswd2.val("");
+                fuserpswd2.focus();
+                return false;
+            }
+        }
+        var loadingIndex = -1;
+        var floginacct = $("#floginacct");
+        var fusername = $("#fusername");
+        var femail = $("#femail");
+        var fuserpswd2 = $("#fuserpswd2");
+        $.ajax({
+            type: "post",
+            data : {
+                "loginacct" : floginacct.val(),
+                "username" : fusername.val(),
+                "email" : femail.val(),
+                "userpswd" : fuserpswd2.val()
+            },
+            url :"/doRegister",
+            beforeSend: function() {
+                loadingIndex = layer.msg('正在添加', {icon: 16});
+            },
+            success : function(result){
+                layer.close(loadingIndex);
+                if(result.success){
+                    layer.msg("添加用户成功！", {time:1500, icon:6});
+                    $("#floginacct").val("");
+                    $("#fusername").val("");
+                     $("#femail").val("");
+                     $("#fuserpswd1").val("");
+                    $("#fuserpswd2").val("");
+                    $("#floginacct").focus();
+                }else{
+                    layer.msg(result.message, {time:1500, icon:5, shift:6});
+                }
+            }
+
+        });
+    }
+    //清空文本框
+    function clearText(){
+        $("#floginacct").val("");
+        $("#fusername").val("");
+        $("#femail").val("");
+        $("#fuserpswd1").val("");
+        $("#fuserpswd2").val("");
+        $("#floginacct").focus();
+    }
+    //取消添加
+    function unadd(){
+        $("#panel1").show();
+        $("#panel2").hide();
+        $("#floginacct").val("");
+        $("#fusername").val("");
+        $("#femail").val("");
+        $("#fuserpswd1").val("");
+        $("#fuserpswd2").val("");
+        $("#floginacct").focus();
+        var jsonObj = {};
+        jsonObj.pageno = 1;
+        jsonObj.pagesize = 10;
+        jsonObj.keycode = null;
+        loadUser(jsonObj)
+    }
+
+    //点击修改的按钮
+    function updateBtn(id){
+
+       $.ajax({
+            type : "post",
+            url : "/manager/user/echoeUser",
+            data : {
+                "id":id
+            },
+            success : function(result){
+                if(result.success){
+                    var data = result.memberResult;
+                    if(data.role == "管理员"){
+                        $("#administrators").attr("checked",true);
+                        $("#administrators").attr("disabled",true);
+                    }else if (data.role == "投稿者") {
+                        $("#contributor").attr("checked",true);
+                        $("#contributor").attr("disabled",true);
+                    }
+                    $("#uloginacct").val(data.loginacct);
+                    $("#uusername").val(data.username);
+                    $("#uemail").val(data.email);
+                    $("#memberid").val(data.id);
+
+                    $("#panel1").hide();
+                    $("#panel3").show();
+                }else{
+                    layer.msg("修改操作失败！", {time:1000, icon:5, shift:6});
+                }
+            }
+        });
+
+    }
+    //修改用户
+    function update(){
+        var username = $("#uusername").val();
+        var email = $("#uemail").val();
+        $.ajax({
+            type : "post",
+            url : "/manager/user/updateUser",
+            data : {
+                "id":$("#memberid").val(),
+                "username" : username,
+                "email" : email
+            },
+            success : function(result){
+                if(result.success){
+                    layer.msg(result.message, {time:3000, icon:5, shift:6});
+                }else{
+                    layer.msg(result.message, {time:3000, icon:6, shift:6});
+                }
+            }
+        });
+    }
+
+    /*$("#administrators").click(function(){
+        layer.confirm("确定要修改用户的角色吗？",  {icon: 3, title:'提示'}, function(cindex){
+            $.ajax({
+                type : "post",
+                url : "/manager/user/updateRole",
+                data : {
+                    "id":$("#memberid").val()
+                },
+                success : function(result){
+                    if(result.success){
+                        $("#administrators").attr("disabled",true);
+                        $("#contributor").attr("disabled",false);
+                    }else{
+                        $("input[name='urole']").get(1).checked=true;
+                        $("#administrators").attr("disabled",false);
+                        $("#contributor").attr("disabled",true);
+                        layer.msg(result.message, {time:3000, icon:5, shift:6});
+                    }
+                }
+            });
+            layer.close(cindex);
+        }, function(cindex){
+            $("#contributor").get(0).ckecked = true;
+            $("#administrators").attr("disabled",false);
+            $("#contributor").attr("disabled",true);
+            layer.close(cindex);
+        });
+    });
+    $("#contributor").click(function(){
+        alert("contributor");
+        layer.confirm("确定要修改用户的角色吗？",  {icon: 3, title:'提示'}, function(cindex){
+            $.ajax({
+                type : "post",
+                url : "/manager/user/updateRole",
+                data : {
+                    "id":$("#memberid").val()
+                },
+                success : function(result){
+                    if(result.success){
+                        $("#administrators").attr("disabled",false);
+                        $("#contributor").attr("disabled",true);
+                    }else{
+                        $("input[name='urole']").get(0).checked=true;
+                        $("#administrators").attr("checked",true);
+                        $("#contributor").attr("disabled",false);
+                        layer.msg(result.message, {time:3000, icon:5, shift:6});
+                    }
+                }
+            });
+            layer.close(cindex);
+        }, function(cindex){
+            $("#administrators").get(0).ckecked = true;
+            $("#administrators").attr("disabled",true);
+            $("#contributor").attr("disabled",false);
+            layer.close(cindex);
+        });
+    });*/
+
+    //还原
+    function reductionBtn(){
+        updateBtn($("#memberid").val())
+    }
+    function goback(){
+        $("#panel3").hide();
+        $("#panel1").show();
+        $("#administrators").attr("disabled",false);
+        $("#contributor").attr("disabled",false);
+    }
+    function deleteUser(id,name){
+        layer.confirm("确定要"+name+"吗？",  {icon: 3, title:'提示'}, function(cindex){
+            $.ajax({
+                type : "post",
+                url : "/manager/user/deleteUser",
+                data : {
+                    "id":id
+                },
+                success : function(result){
+                    if(result.success){
+                         var jsonObj = {};
+                        jsonObj.pageno = 1;
+                        jsonObj.pagesize = 10;
+                        jsonObj.keycode = null;
+                        loadUser(jsonObj)
+                        layer.msg(result.message, {time:3000, icon:6, shift:6});
+                    }else{
+                        layer.msg(result.message, {time:3000, icon:5, shift:6});
+                    }
+                }
+            });
+            layer.close(cindex);
+        }, function(cindex){
+
+            layer.close(cindex);
+        });
+
+    }
+</script>
+</body>
+</html>

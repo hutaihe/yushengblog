@@ -45,7 +45,7 @@
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container" id="searchcontent">
     <div class="row" id="keycode"></div>
     <div class="row">
         <div class="col-lg-12" id="content">
@@ -140,7 +140,8 @@
                       prev_text:"上一页",
                       next_text:"下一页"
                   });
-              }else{
+              }
+              else{
                   var content =  "<div class='row'>搜索 java 找到0 个与之相关的文章</div>";
                   content += "<div class='row'>";
                   content += "<div class='col-lg-12' id='content'>";
@@ -151,16 +152,16 @@
                   content += "<p> <img src='/image/rename.jpg'></p>";
                   content += "</div>";
                   content += "</div>";
-                  $("#container").html(content);
+                  $("#searchcontent").html(content);
               }
           }
-      })
+      });
     }
     //获取请求地址的参数
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
-        if(r!=null)return  unescape(r[2]); return null;
+        if(r!=null)return  decodeURI(r[2]); return null;
     }
     $(document).ready(function(){
         $(document).off('click.bs.dropdown.data-api');

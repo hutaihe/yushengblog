@@ -29,4 +29,11 @@
     <delete id="deleteArticleTypeByTypeId">
         delete from t_article_type where typeid = #{id}
     </delete>
+    <delete id="deleteArticleTypeByArticleIds" parameterType="int">
+        delete from t_article_type where
+        articleid in
+        <foreach collection="list" item="item" separator="," open="(" close =")">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

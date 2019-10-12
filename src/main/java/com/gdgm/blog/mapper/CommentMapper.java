@@ -38,4 +38,10 @@ public interface CommentMapper {
     Integer queryCountByPpid(Integer ppid);
 
     void deleteCommentByPpid(Integer ppid);
+
+    void deleteCommentByArticleIds(List<Integer> ids);
+
+    void deleteCommentByMemberId(Integer id);
+
+    List<Integer> quyerCommentByMemberid(Integer id);
 }

@@ -8,4 +8,8 @@ public interface MemberRoleService {
     MemberRole queryMemberRoleByMemeberid(Integer id);
 
     void saveMemberRole(Integer memberid,Integer roleid);
+
+    Integer updateMemberRoleByMemberid(Integer memberid,Integer roleid);
+
+    void deleteMemberRoleByMemberid(Integer id);
 }

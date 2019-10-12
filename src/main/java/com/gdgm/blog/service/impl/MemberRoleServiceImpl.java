@@ -21,4 +21,14 @@ public class MemberRoleServiceImpl implements MemberRoleService {
     public void saveMemberRole(Integer memberid,Integer roleid) {
         memberRoleMapper.saveMemberRole(memberid,roleid);
     }
+
+    @Override
+    public Integer updateMemberRoleByMemberid(Integer memberid,Integer roleid) {
+        return memberRoleMapper.updateMemberRoleByMemberid(memberid,roleid);
+    }
+
+    @Override
+    public void deleteMemberRoleByMemberid(Integer id) {
+        memberRoleMapper.deleteMemberRoleByMemberid(id);
+    }
 }

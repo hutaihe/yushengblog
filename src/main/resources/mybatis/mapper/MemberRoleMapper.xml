@@ -15,4 +15,10 @@
     <insert id="saveMemberRole">
         insert into t_member_role(memberid,roleid) values(#{memberid},#{roleid})
     </insert>
+    <update id="updateMemberRoleByMemberid">
+        update t_member_role set roleid = #{roleid} where memberid = #{memberid}
+    </update>
+    <delete id="deleteMemberRoleByMemberid">
+        delete from t_member_role where memberid = #{id}
+    </delete>
 </mapper>

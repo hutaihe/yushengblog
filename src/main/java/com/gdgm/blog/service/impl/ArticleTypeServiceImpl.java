@@ -39,4 +39,9 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     public void deleteArticleTypeByTypeId(Integer id) {
         articleTypeMapper.deleteArticleTypeByTypeId(id);
     }
+
+    @Override
+    public void deleteArticleTypeByArticleIds(List<Integer> ids) {
+        articleTypeMapper.deleteArticleTypeByArticleIds(ids);
+    }
 }

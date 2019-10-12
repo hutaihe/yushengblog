@@ -5,6 +5,7 @@ import com.gdgm.blog.bean.Member;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemberMapper {
     public Member queryMember(Member member);
@@ -28,4 +29,14 @@ public interface MemberMapper {
     void updatePasswordByloginacct(@Param("loginacct") String loginacct, @Param("code")String code);
 
     List<Member> queryMembers(@Param("ids")List<Integer> ids);
+
+    Integer queryCountByMap(Map<String, Object> map);
+
+    List<Member> queryMemberByMap(Map<String, Object> map);
+
+    Integer updateMemberByMemberId(Member member);
+
+    void deleteMemberById(Integer id);
+
+    String queryMemberByArticleId(Integer memberid);
 }

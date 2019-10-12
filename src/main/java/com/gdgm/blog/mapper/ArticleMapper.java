@@ -63,4 +63,8 @@ public interface ArticleMapper {
     Integer queryCountByKeyCoke(String keycode);
 
     List<ArticleResult> queryPageByKeyCoke(@Param("startIndex") Integer startIndex, @Param("pagesize") Integer pagesize, @Param("keycode") String keycode);
+
+    List<Integer> queryIdsByMemberid(Integer id);
+
+    void deleteArticleByMemberId(Integer id);
 }

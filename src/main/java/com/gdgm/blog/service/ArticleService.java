@@ -60,4 +60,8 @@ public interface ArticleService {
     Integer updateAccessById(Integer id);
 
     Page queryPageByKeyCode(Integer pageno, Integer pagenosize, String name);
+
+    List<Integer> queryIdsByMemberid(Integer id);
+
+    void deleteArticleByMemberId(Integer id);
 }

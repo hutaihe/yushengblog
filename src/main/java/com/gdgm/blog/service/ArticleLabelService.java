@@ -17,4 +17,6 @@ public interface ArticleLabelService {
     List<ArticleLabel> queryAllArticleLabel();
 
     void deletearticleLabelByLabelid(Integer id);
+
+    void deleteArticleLabelByArticleIds(List<Integer> ids);
 }

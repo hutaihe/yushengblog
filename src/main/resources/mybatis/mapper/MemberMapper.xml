@@ -66,4 +66,36 @@
             #{item}
         </foreach>
     </select>
+    <!--根据map来查询总用户数-->
+    <select id="queryCountByMap" resultType="int">
+        select count(*) from t_member
+        <where>
+            <if test="keycode != null">
+                loginacct like concat("%",#{keycode},"%")
+            </if>
+        </where>
+
+    </select>
+    <!--根据map来查询用户-->
+    <select id="queryMemberByMap" resultMap="BaseResultMap">
+        select *  from t_member
+        <where>
+            <if test="keycode != null">
+                loginacct like concat("%",#{keycode},"%")
+            </if>
+        </where>
+         order by id desc
+        limit #{startIndex} , #{pagesize}
+    </select>
+    <update id="updateMemberByMemberId">
+        update t_member set  username = #{username},
+                              email = #{email}
+                              where id = #{id}
+    </update>
+    <delete id="deleteMemberById">
+        delete from t_member where id = #{id}
+    </delete>
+    <select id="queryMemberByArticleId" resultType="String">
+        select username from t_member where id = #{memberid}
+    </select>
 </mapper>

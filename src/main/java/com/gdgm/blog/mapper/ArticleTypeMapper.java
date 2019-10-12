@@ -17,4 +17,6 @@ public interface ArticleTypeMapper {
     List<ArticleType> queryAllArticleType();
 
     void deleteArticleTypeByTypeId(Integer id);
+
+    void deleteArticleTypeByArticleIds(List<Integer> ids);
 }

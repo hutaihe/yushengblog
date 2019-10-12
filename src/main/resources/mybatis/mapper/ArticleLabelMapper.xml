@@ -35,5 +35,11 @@
     <delete id="deletearticleLabelByLabelid">
         delete from t_article_label where labelid = #{labelid}
     </delete>
-
+    <delete id="deleteArticleLabelByArticleIds" parameterType="java.util.List">
+        delete from t_article_label where 
+        articleid in
+        <foreach collection="list" item="items" separator="," open="(" close =")">
+            #{items}
+        </foreach>
+    </delete>
 </mapper>

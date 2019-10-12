@@ -46,4 +46,8 @@ public class ArticleLabelServiceImpl implements ArticleLabelService {
         articleLabelMapper.deletearticleLabelByLabelid(id);
     }
 
+    @Override
+    public void deleteArticleLabelByArticleIds(List<Integer> ids) {
+        articleLabelMapper.deleteArticleLabelByArticleIds(ids);
+    }
 }
