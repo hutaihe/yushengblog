@@ -101,7 +101,7 @@
             </div>-->
             <input type="hidden" id="pageno" name="1">
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3" th:fragment="menu">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -206,6 +206,7 @@
                             content += "<li><a href='"+n.url+"?id="+n.id+"'>"+n.name+"</a></li>";
                         }
                     });
+                    content += "<li><a href='/message'>留言</a></li>";
                     $("#nav").append(content);
                 }else{
                     alert("系统异常！");

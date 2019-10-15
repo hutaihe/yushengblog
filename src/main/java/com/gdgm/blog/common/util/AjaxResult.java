@@ -54,6 +54,8 @@ public class AjaxResult {
 
     private Integer connum;
 
+    private  Message mesa;
+
     public DataResult getDataResult() {
         return dataResult;
     }
@@ -231,5 +233,13 @@ public class AjaxResult {
     }
     public Integer getConnum(){
         return  connum;
+    }
+
+    public Message getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(Message mesa) {
+        this.mesa = mesa;
     }
 }

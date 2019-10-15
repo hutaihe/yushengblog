@@ -23,7 +23,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
                                 "/test","/loadNav","/loadArticle","/category","/loadArticleByTypeid",
                                 "/loadPopular","/loadLabel","/tag","/loadArticleByLabelId","/loadLike",
                         "/article","/articleContent","/author","/loadArticleByMemberid","/loadComment",
-                        "/likeArticle","/fabulousArticle","/search","/doSearch");
+                        "/likeArticle","/fabulousArticle","/search","/doSearch","/message","/loadMessage","/submitMessage");
                 //访问拦截器
                 registry.addInterceptor(new VisitHandlerInterceptor()).addPathPatterns("/article");
             }

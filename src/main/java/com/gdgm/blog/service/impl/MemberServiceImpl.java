@@ -31,6 +31,8 @@ public class MemberServiceImpl implements MemberService {
     private CommentService commentService;
     @Autowired
     private MemberRoleService memberRoleService;
+    @Autowired
+    private MessageService messageService;
     @Override
     public Member queryMemberById(Integer id) {
         return memberMapper.queryMemberById(id);
@@ -156,6 +158,8 @@ public class MemberServiceImpl implements MemberService {
                     articleService.deleteArticleByMemberId(id);
                 }
             }
+            //删除留言
+            messageService.deleteMessageByMemberid(id);
             //删除该用户角色
             memberRoleService.deleteMemberRoleByMemberid(id);
             //删除用户

@@ -1,0 +1,371 @@
+
+body{
+    background: #eee;
+}
+li{
+    list-style-type: none;
+}
+/*头部登录链接*/
+.col-lg-12{
+    height: 30px;
+    background: #eee;
+}
+.top{
+    display: block;
+    margin-top: 5px;
+}
+/*大屏幕*/
+@media screen and (min-width:1200px) {
+    .dropdown ul {
+        display: none;
+    }
+    .dropdown:hover ul {
+        display: block;
+    }
+}
+/*导航条字体*/
+.navbar-brand,.navbar-default .navbar-nav>li>a {
+    color: white!important;
+}
+.navbar-nav>.open>a{
+    background-color:#FF6666!important;
+}
+.navbar-nav>.open>a:hover {
+    color: #555;
+    background-color:#FF6666!important;
+}
+.active>a{
+    background-color:#FF6666!important;
+}
+.navbar-nav>li>a:hover{
+     background-color:#FF6666!important;
+ }
+.navbar-nav>li>span{
+    color: white!important;
+    padding: 17px;
+    display: block;
+}
+.navbar-nav>li>span:hover{
+    background-color:#FF6666!important;
+}
+#search{
+
+}
+.dropdown-menu{
+    margin: 0px;
+    width: 100px;
+    opacity:0.8;
+}
+.dropdown-menu li{
+    width: 100%!important;
+    height: 40px;
+    border-bottom: 1px solid #bdc3c7;
+
+}
+.dropdown-menu li a{
+    display: block;
+    height: 39px;
+    padding-top: 10px;
+}
+.col-lg-9{
+  background: white;
+    padding: 0px;
+    overflow: hidden;
+}
+header{
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+
+}
+#commit{
+    margin-bottom: 20px;
+}
+#commit button{
+    background: #0099CC;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    border: 0px ;
+    outline: 0;
+}
+#commit button:hover{
+    background: #FF6666 ;
+}
+#commit-header{
+    margin-top: 20px;
+    height: 50px;
+    line-height: 50px;
+    background: rgb(247, 247, 247);
+    padding-left: 15px;
+}
+#commit-header img{
+    width: 30px;
+    height: 30px;
+
+}
+#commit-content{
+    padding: 20px;
+    position: relative;
+}
+#commit-content small{
+    position: absolute;
+    left: 22px;
+    top: 22px;
+
+}
+#commit-content textarea{
+    width: 100%;
+    height: 150px;
+    resize:none;
+
+}
+#commit-content-top{
+    color: #0099CC;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+#commit-content-content{
+    padding: 20px;
+    position: relative;
+}
+#commit-content-content ul{
+    padding: 0px;
+    margin: 0px;
+}
+#commit-content-content ul li{
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.userimage img{
+    width: 60px;
+    height: 60px;
+}
+.userimage{
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+.commit{
+    float: right;
+    width: calc(100% - 80px);
+    positon:absolute;
+    background: #fbfdfb;
+    border: 1px #eee solid;
+    padding: 10px;
+}
+.commit p{
+   font-size: 15px;
+   line-height: 25px;
+}
+.commit span{
+    color: #bbb;
+    font-size: 14px;
+}
+.commit span a{
+   color: #0099CC;
+}
+.commit span a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+header h1{
+    font-size: 21px;
+    font-weight: 400;
+    padding: 0;
+}
+.col-lg-3{
+    padding-right: 0px;
+}
+
+
+/*右边面板*/
+.panel-default{
+    border: 0px;
+}
+.panel-heading{
+    color:  #0099CC!important;
+    background: white!important;
+    border-bottom:1px solid  #ddd !important ;
+}
+.panel-body ul{
+    padding: 0px;
+    margin: 0px;
+}
+.panel-body ul li{
+   list-style: none;
+    margin-bottom: 10px;
+}
+.panel-body ul li a{
+    font-size: 10px;
+    line-height: 22px;
+    color: #777;
+}
+.panel-body ul li a:hover{
+    text-decoration: none;
+    color: #95a5a6;
+}
+.panel-body .label-1{
+    background: #e74c3c;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.panel-body .label-2{
+    background: #6fc299;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.panel-body .label-3{
+    background: #81c1f2;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.panel-body .label-4{
+    background: #999;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+
+/*标签库*/
+.label-button button{
+    background: white;
+    border: 1px solid  #0099CC;
+    border-radius: 4px;
+    color: #777;
+    margin-bottom: 10px;
+}
+.label-button button:hover{
+    background:#FF6666 ;
+    color: white;
+}
+/*猜你喜欢*/
+.like{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    height: 78px;
+
+}
+.like-1{
+    width: 80px;
+    height: 64px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.like-1 img{
+    width: 80px;
+    height: 64px;
+}
+.like-2{
+    height: 50px;
+    display: block;
+}
+.like-2 a{
+    display: block;
+    color: #0099CC!important;
+}
+.like-2 a:hover{
+    display: block;
+    color: #FF6666!important;
+}
+.like-3{
+    color: #999;
+}
+.like-4{
+    color: #999;
+}
+
+/*页脚*/
+.footer{
+    height: 80px;
+    background: #333;
+}
+/*小屏幕*/
+@media only screen and (max-width: 768px) {
+    .col-lg-3{
+        display: none;
+    }
+    .item{
+        height: 180px;
+    }
+    .focus{
+        width: 100px;
+        height: 68px;
+    }
+    .focus img{
+        width: 100px;
+        height: 68px;
+    }
+    .arcitle-title{
+        font-size: 15px;
+    }
+    /*标签*/
+    .label{
+        font-size: 15px;
+    }
+    .excerpt{
+        height: 150px;
+    }
+    .note{
+        height: 68px;
+        overflow: hidden;
+        font-size: 5px;
+    }
+    .excerpt p{
+        display: none;
+    }
+    /*导航条*/
+     .dropdown-menu>li>a{
+        color: white!important;
+    }
+}
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+    .col-lg-3{
+        display: none;
+    }
+}
+@media screen and (max-width: 992px) and (min-width: 768px){
+    .col-lg-3{
+        display: none;
+    }
+}

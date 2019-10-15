@@ -1,0 +1,68 @@
+.container{
+    width: 97%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    padding: 0px;
+}
+#search{
+    padding-bottom:10px ;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+table{
+    width: 100%;
+}
+table thead tr{
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 0px;
+}
+table thead tr th{
+    border: 1px solid #ddd;
+    padding: 5px;
+    height: 50px;
+}
+table tbody tr td{
+    border: 1px solid #ddd;
+    padding: 5px;
+    height: 40px;
+}
+table tbody tr td button{
+    float:left;
+    margin-left: 10px;
+    padding: 2px!important;
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+    font-size: 12px!important;
+}
+.pagination li:hover{
+    cursor: pointer;
+}
+.formgroup{
+    width: 100%;
+    margin-bottom: 15px;
+}
+.formgroup label{
+
+}
+.formgroup input{
+    width: 30%;
+    height: 35px;
+    border: 1px solid #95a5a6;
+}
+.formgroup textarea{
+    width: 30%;
+    height: 100px;
+    resize: none;
+    border: 1px solid #95a5a6;
+}
+#selectedbtn{
+    background: #ecf0f1;
+    border: 1px solid #95a5a6;
+    height: 35px;
+    margin: 0px;
+    width: 4%;
+}

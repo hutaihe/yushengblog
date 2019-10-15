@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IT博客 | 留言管理</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/css/main/messagemanagement.css" rel="stylesheet">
+
+</head>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
+    <div th:insert="~{main :: menu}"></div>
+    <div th:insert="~{main :: top}"></div>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                留言管理
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li class="active">留言</li>
+                <li class="active">留言管理</li>
+            </ol>
+        </section>
+        <div class="container" >
+            <div class="panel panel-default" id="panel1">
+                <div class="panel-heading" style="background: white"><span class="glyphicon glyphicon-th"></span>留言列表</div>
+                <div class="panel-body">
+                    <div id="search">
+                        <form class="form-inline" style="float:left;">
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <div class="input-group-addon">查询条件</div>
+                                    <input class="form-control has-success" type="text" placeholder="请输入留言者名称" name="keycode" id="keycode">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-warning" onclick="search()"><i class="glyphicon glyphicon-search"></i> 查询</button>
+                        </form>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="2%">#</th>
+                                <th width="10%">留言者</th>
+                                <th width="53%">内容</th>
+                                <th width="15">创建时间</th>
+                                <th width="6%">状态</th>
+                                <th width="14%">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default" id="panel2" style="display: none">
+                <div class="panel-heading" style="background: white"><span class="glyphicon glyphicon-th"></span>留言回复
+                    <button type="button" class="btn btn-primary" style="float:right;padding: 2px" onclick="goback()"><i class="glyphicon glyphicon-log-out"></i>返回</button>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <input type="hidden" value="" id="messageid">
+                        <div class="formgroup">
+                            <label>留言者:</label>
+                            <label id="username"></label>
+                        </div>
+                        <div class="formgroup">
+                            <label>留言时间:</label>
+                            <label id="createtime"></label>
+                        </div>
+                        <div class="formgroup">
+                            <label>留言内容:</label><br>
+                           <textarea readonly id="messagecontent"></textarea>
+                        </div>
+                        <div class="formgroup">
+                            <label>回复内容:</label><br>
+                            <textarea id="replycontent"></textarea>
+                        </div>
+                        <div class="formgroup">
+                            <button class='btn btn btn-success' onclick='reply()' id='replybtn'>回复</button>
+                            <button class='btn btn-primary' onclick='reply()' id='updatebtn'>修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.2.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    </footer>
+    <div class="control-sidebar-bg"></div>
+</div>
+
+<!-- jQuery 2.1.4 -->
+<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.2 JS -->
+<script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/app.min.js" type="text/javascript"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/dist/js/pages/dashboard.js" type="text/javascript"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js" type="text/javascript"></script>
+<script src="/layer/layer.js"></script>
+<script>
+    window.onload = function(){
+        var jsonObj = {};
+        jsonObj.pageno = 1;
+        jsonObj.pagesize = 10;
+        jsonObj.keycode = null;
+        loadMessage(jsonObj)
+    }
+    function loadMessage(jsonObj){
+        $.ajax({
+            type : "post",
+            url : "/manager/message/loadMessage",
+            data : jsonObj,
+            success : function(result){
+                if(result.success){
+                    var data = result.page.messageList;
+                    var content = "";
+                    var paging = "";
+                    $.each(data,function(i,n){
+                        content += "<tr>";
+                        content += "<td>"+(i+1)+"</td>";
+                        content += "<td>"+n.username+"</td>";
+                        content += "<td>"+n.content+"</td>";
+                        content += "<td>"+n.createtime+"</td>";
+                        if(n.status == "未回复"){
+                            content += "<td style='color: red'>"+n.status+"</td>";
+                        }else{
+                            content += "<td style='color: #3c8dbc'>"+n.status+"</td>";
+                        }
+                        content += "<td>";
+                        if(n.status == "未回复"){
+                            content += " <button class='btn btn btn-success' onclick='replybtn("+n.id+")' >回复</button>";
+                        }else{
+                            content += " <button class='btn btn-primary' onclick='replybtn("+n.id+")' >修改</button>";
+                        }
+                        content += '<button class="btn btn-danger" onclick="deleteMessage('+n.id+',\''+n.username+'\')">删除</button>';
+                        content += "</td>";
+                        content += "</tr>";
+                    });
+                    //拼接分页
+                    paging += "<tr>";
+                    paging += " <td colspan='6' align='center'>";
+                    paging += " <ul class='pagination'>";
+                    if(result.page.pageno == 1){
+                        paging += " <li class='disabled'><a >上一页</a></li>";
+                    }else{
+                        paging += " <li><a onclick='paging("+(result.page.pageno-1)+")' '>上一页</a></li>";
+                    }
+                    for( i = 1 ; i <= result.page.totalno ; i++){
+                        paging += "<li";
+                        if(i == result.page.pageno){
+                            paging += " class='active'";
+                        }
+                        paging += ">";
+                        paging += " <a href='#' onclick='paging("+i+")'>"+i+" <span class='sr-only'>(current)</span></a></li>";
+                    }
+                    if(result.page.pageno == result.page.totalno){
+                        paging += " <li class='disabled'><a href='#'>下一页</a></li>";
+                    }else{
+                        paging += " <li><a onclick='paging("+(result.page.pageno+1)+")'>下一页</a></li>";
+                    }
+                    paging += "</ul>";
+                    paging += "</td>";
+                    paging += "</tr>";
+
+                    $("tbody").html(content);
+                    $("tfoot").html(paging);
+                }else{
+                    var content = "<tr>";
+                    content += "<td colspan='6' align='center'>";
+                    content += "暂无数据";
+                    content += "</td>";
+                    content += "</tr>";
+                    $("tbody").html(content);
+                    layer.msg(result.message, {time:1000, icon:5, shift:6});
+                }
+            }
+        })
+    }
+    function paging(pageno){
+        var jsonObj = {};
+        jsonObj.pageno = pageno;
+        jsonObj.pagesize = 10;
+        loadMessage(jsonObj);
+    }
+    function search(){
+        var keycode = $("#keycode").val();
+        var jsonObj = {};
+        jsonObj.pageno = 1;
+        jsonObj.pagesize = 10;
+        jsonObj.keycode = keycode;
+        loadMessage(jsonObj);
+    }
+   function replybtn(id){
+       $.ajax({
+           type : "post",
+           url : "/manager/message/eachMessage",
+           data : {
+               "id" : id
+           },
+           success : function(result) {
+               if (result.success) {
+                   var data = result.mesa;
+                   $("#username").text(data.username);
+                   $("#createtime").text(data.createtime);
+                   $("#messagecontent").text(data.content);
+                   if(data.reply == null){
+                       $("#replycontent").val("");
+                   }else{
+                       $("#replycontent").text(data.reply);
+                   }
+
+                   $("#messageid").val(data.id);
+                   if(data.status == "未回复"){
+                       $("#replybtn").show();
+                       $("#updatebtn").hide();
+                   }else{
+                       $("#updatebtn").show();
+                       $("#replybtn").hide();
+                   }
+
+                   $("#panel1").hide();
+                   $("#panel2").show();
+               }else{
+                   layer.msg(result.message, {time:1000, icon:5, shift:6});
+               }
+           }
+       });
+   }
+    function reply(){
+       if($("#replycontent").val() == ""){
+           layer.msg("回复内容不能为空！", {time:1000, icon:5, shift:6});
+       }else{
+           $.ajax({
+               type : "post",
+               url : "/manager/message/reply",
+               data : {
+                   "id" :  $("#messageid").val(),
+                   "reply" : $("#replycontent").val(),
+               },
+               success : function(result) {
+                   if (result.success) {
+                       $("#updatebtn").show();
+                       $("#replybtn").hide();
+                       layer.msg("回复成功", {time:1000, icon:6, shift:6});
+
+                   }else{
+                       layer.msg(result.message, {time:1000, icon:5, shift:6});
+                   }
+               }
+           });
+       }
+    }
+    function goback(){
+        $("#panel2").hide();
+        $("#panel1").show();
+        var jsonObj = {};
+        jsonObj.pageno = 1;
+        jsonObj.pagesize = 10;
+        jsonObj.keycode = null;
+        loadMessage(jsonObj);
+    }
+    function deleteMessage(id,name){
+        layer.confirm("确定要删除"+name+"的留言吗？",  {icon: 3, title:'提示'}, function(cindex){
+            $.ajax({
+                type : "post",
+                url : "/manager/message/deleteMessage",
+                data : {
+                    "id":id,
+                },
+                success : function(result){
+                    if(result.success){
+                        var jsonObj = {};
+                        jsonObj.pageno = 1;
+                        jsonObj.pagesize = 10;
+                        jsonObj.keycode = null;
+                        loadMessage(jsonObj)
+                        layer.msg(result.message, {time:3000, icon:6, shift:6});
+                    }else{
+                        layer.msg(result.message, {time:3000, icon:5, shift:6});
+                    }
+                }
+            });
+            layer.close(cindex);
+        }, function(cindex){
+            layer.close(cindex);
+    });
+    }
+</script>
+</body>
+</html>

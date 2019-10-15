@@ -479,8 +479,6 @@
     function goback(){
         $("#panel3").hide();
         $("#panel1").show();
-        $("#administrators").attr("disabled",false);
-        $("#contributor").attr("disabled",false);
     }
     function deleteUser(id,name){
         layer.confirm("确定要"+name+"吗？",  {icon: 3, title:'提示'}, function(cindex){

@@ -1,8 +1,10 @@
 package com.gdgm.blog.common.util;
 import com.gdgm.blog.bean.Member;
+import com.gdgm.blog.bean.Message;
 import com.gdgm.blog.bean.Noticle;
 import com.gdgm.blog.common.result.ArticleResult;
 import com.gdgm.blog.common.result.CommentResult;
+import com.gdgm.blog.common.result.MessageResult;
 
 import java.util.List;
 
@@ -30,6 +32,10 @@ public class Page {
     private List<CommentResult> commentResultList;
 
     private List<Member> memberList ;
+
+    private List<Message> messageList;
+
+    private List<MessageResult> messageResultList;
 
     public CommentResult getCommentResult() {
         return commentResult;
@@ -131,5 +137,21 @@ public class Page {
 
     public void setMemberList(List<Member> memberList) {
         this.memberList = memberList;
+    }
+
+    public List<Message> getMessageList() {
+        return messageList;
+    }
+
+    public void setMessageList(List<Message> messageList) {
+        this.messageList = messageList;
+    }
+
+    public List<MessageResult> getMessageResultList() {
+        return messageResultList;
+    }
+
+    public void setMessageResultList(List<MessageResult> messageResultList) {
+        this.messageResultList = messageResultList;
     }
 }
