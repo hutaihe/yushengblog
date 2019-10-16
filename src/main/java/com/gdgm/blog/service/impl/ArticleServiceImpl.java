@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Transactional
 @Service
@@ -495,5 +496,51 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void deleteArticleByMemberId(Integer id) {
         articleMapper.deleteArticleByMemberId(id);
+    }
+
+    @Override
+    public Page queryPageByMap(Map<String, Object> map) {
+        Integer pageno = (Integer)map.get("pageno");
+        Integer pagesize = (Integer)map.get("pagesize");
+        Page page = new Page(pageno,pagesize);
+        map.put("startIndex",page.getStartIndex());
+        Integer totalsize = articleMapper.queryAllCountByMap(map);
+        page.setTotalsize(totalsize);
+        List<Article> articles = articleMapper.queryPageMap(map);
+        List<ArticleResult> articleResults = new ArrayList<>();
+        for(Article article : articles){
+            ArticleResult articleResult = new ArticleResult() ;
+            //将article对象的属性复制到articleResult中去
+            BeanUtils.copyProperties(article,articleResult);
+            //查询图片
+            Picture picture = pictureService.queryPictureById(article.getPid());
+            List<Type> types = articleTypeService.queryTypeByArticleId(article.getId());
+            //如果分类有两条，什么有子分类，那就选择子分类
+            if(types.size()>=2){
+                for(Type type : types){
+                    if(type.getPid()!= null){
+                        articleResult.setClassification(type);
+                    }
+                }
+            }else{
+                articleResult.setClassification(types.get(0));
+            }
+            //存储图片
+            articleResult.setPicture(picture);
+            //控制conten的字数
+            String content = article.getContent().replaceAll("<.*?>", " ").replaceAll("", "");
+            content =  content.replaceAll("<.*?", "");
+            //如果文字长度超过200个字符则切割字符
+            if(content.length()>=200){
+                content = content.substring(0,200)+"...";
+            }
+            //查询作者
+            Member member = memberService.queryMemberById(article.getMemberid());
+            articleResult.setUsername(member.getUsername());
+            articleResult.setContent(content);
+            articleResults.add(articleResult);
+        }
+        page.setArticleResults(articleResults);
+        return page;
     }
 }

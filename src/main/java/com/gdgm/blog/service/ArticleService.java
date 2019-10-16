@@ -9,6 +9,7 @@ import com.gdgm.blog.common.util.Page;
 import com.gdgm.blog.common.vo.ArticleVo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ArticleService {
     boolean saveArticle(ArticleVo articleVo, Integer memberid);
@@ -64,4 +65,6 @@ public interface ArticleService {
     List<Integer> queryIdsByMemberid(Integer id);
 
     void deleteArticleByMemberId(Integer id);
+
+    Page queryPageByMap(Map<String, Object> map);
 }

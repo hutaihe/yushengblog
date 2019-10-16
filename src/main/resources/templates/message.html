@@ -13,14 +13,8 @@
     <link href="/pagination/pagination.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <span class="top">欢迎光临！<a href="/toLogin">登录 </a></span>
-        </div>
-    </div>
-</div>
-<nav class="navbar navbar-default navbar-color" role="navigation" style="background: #0099CC">
+
+<nav class="navbar navbar-default navbar-color" role="navigation" style="background: #0099CC;margin-bottom: 0px">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -37,47 +31,66 @@
                 <li><a href="/">首页</a></li>
 
             </ul>
+            <ul class="nav navbar-nav navbar-right"  id="nav-searchbtn">
+                <li class="active" onclick="search()"><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+            </ul>
         </div>
     </div>
 </nav>
 <div class="container">
     <div class="row">
+        <div class="col-lg-12" style="margin-bottom: 20px" >
+            <div id="speedbar">
+                <div id="toptip">
+                    <span><i class="glyphicon glyphicon-volume-up"></i> 欢迎来访~</span>
+                </div>
+                <div id="pullrigth">
+                    <input type="text" id="search">
+                    <span><i class="glyphicon glyphicon-user"></i><a href="/toLogin"> 登陆</a></span>
+                    <span><i class="glyphicon glyphicon-leaf"></i><a href="/toRegister"> 注册 </a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-9">
-            <header>
-                <h1>留言</h1>
-            </header>
-            <li id="append">
-                <div id="commit">
-                <div id="commit-header">
-                    <span th:if="${session.member != null}">
-                        <img  th:src="@{/image/pic/{image}(image=${session.member.image})}" >
-                        <span><a href="/main" th:text="${session.member.username}"> </a>快来发表你的留言吧</span>
-                        <input type="hidden" th:value="${session.member.id}" id="memberid">
-                    </span>
-                    <span th:unless="${session.member != null}">
-                        <img  src="/image/3.png" width="30px" height="30px">
-                        <span><a href="/toLogin">登录</a>给我留言</span>
-                    </span>
+            <div style="background: white">
+                <header>
+                    <h1>留言</h1>
+                </header>
+                <li id="append">
+                    <div id="commit">
+                    <div id="commit-header">
+                        <span th:if="${session.member != null}">
+                            <img  th:src="@{/image/pic/{image}(image=${session.member.image})}" >
+                            <span><a href="/main" th:text="${session.member.username}"> </a>快来发表你的留言吧</span>
+                            <input type="hidden" th:value="${session.member.id}" id="memberid">
+                        </span>
+                        <span th:unless="${session.member != null}">
+                            <img  src="/image/3.png" width="30px" height="30px">
+                            <span><a href="/toLogin">登录</a>给我留言</span>
+                        </span>
+                    </div>
+                    <div id="commit-content">
+                        <small>写点什么...</small>
+                        <textarea id="messagecontent" maxlength="500" onchange="this.value=this.value.substring(0, 500)" onkeydown="this.value=this.value.substring(0, 500)" onkeyup="this.value=this.value.substring(0, 500)" ></textarea>
+                        <button type="button" class="btn btn-primary" style="float:right;" onclick="submitMessage()" >提交留言</button>
+                    </div>
                 </div>
-                <div id="commit-content">
-                    <small>写点什么...</small>
-                    <textarea id="messagecontent" maxlength="500" onchange="this.value=this.value.substring(0, 500)" onkeydown="this.value=this.value.substring(0, 500)" onkeyup="this.value=this.value.substring(0, 500)" ></textarea>
-                    <button type="button" class="btn btn-primary" style="float:right;" onclick="submitMessage()" >提交留言</button>
-                </div>
-            </div>
-            </li>
-            <div id="commit-comtent">
-                <div id="commit-content-top">
-                    <span class="glyphicon glyphicon-comment " id="messagenum"> </span>
-                </div>
-                <div id="commit-content-content">
-                    <ul>
+                </li>
+                <div id="commit-comtent">
+                    <div id="commit-content-top">
+                        <span class="glyphicon glyphicon-comment " id="messagenum"> </span>
+                    </div>
+                    <div id="commit-content-content">
+                        <ul>
 
-                    </ul>
-                    <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+                        </ul>
+                        <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+                    </div>
                 </div>
-            </div>
-            <input type="hidden" id="pageno" name="1">
+                <input type="hidden" id="pageno" name="1">
+                </div>
         </div>
         <div class="col-lg-3">
             <div class="panel panel-default">
@@ -339,7 +352,21 @@
 
         }
     }
+    function  search() {
+        var display =$('#search').css('display');
+        if(display == 'none'){
+            $("#search").show()
+        }else{
+            $("#search").hide()
+        }
 
+    }
+
+    $("#search").keyup(function(event){
+        if(event.keyCode ==13){
+            window.location.href="/search?keycode="+$("#search").val();
+        }
+    });
 </script>
 <script>
     $(document).ready(function(){

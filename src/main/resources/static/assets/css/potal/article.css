@@ -12,6 +12,7 @@ body {
     display: block;
     margin-top: 5px;
 }
+
 /*大屏幕*/
 @media screen and (min-width:1200px) {
     .dropdown ul {
@@ -38,6 +39,53 @@ body {
 .navbar-nav>li>a:hover{
     background-color:#FF6666!important;
 }
+#speedbar{
+    height: 40px;
+    background: #fbfbfb;
+}
+#toptip{
+    float: left;
+}
+#toptip span i{
+    padding-left: 20px;
+    line-height: 40px;
+    color: #0099CC;
+}
+#toptip span{
+    color: #666;
+    clear: both;
+}
+#pullrigth{
+    float: right;
+
+}
+#pullrigth span i{
+    line-height: 40px;;
+    color: #0099CC;
+}
+#pullrigth span a{
+    color: #666;
+    clear: both;
+    padding-right: 10px;
+    position: relative;
+}
+#pullrigth span a:hover {
+    color: #FF6666;
+    cursor: pointer;
+    text-decoration: none;
+}
+#pullrigth input{
+    margin-right: 15px;
+    height: 40px;
+    width: 265px;
+    position: absolute;
+    right: 0px;
+    z-index: 500;
+    opacity: 0.9;
+    outline: none;
+    display: none;
+}
+
 .dropdown-menu{
     margin: 0px;
     width: 100px;
@@ -55,10 +103,10 @@ body {
     padding-top: 10px;
 }
 /*左边*/
-.col-lg-9{
+/*.col-lg-9{
     padding-left: 0px;
     padding-right: 0px;
-}
+}*/
 /*文章内容*/
 #content{
     background: white;
@@ -405,9 +453,7 @@ body {
     background: #f7f7f7;
 }
     /*右边*/
-.col-lg-3{
-    padding-right: 0px;
-}
+
 /*通知*/
 .notice{
     background: white;

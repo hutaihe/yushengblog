@@ -154,4 +154,19 @@
     <delete id="deleteArticleByMemberId">
         delete from t_article where memberid = #{id}
     </delete>
+    <!--查询总文章数-->
+    <select id="queryAllCountByMap" resultType="int">
+        select count(*) from t_article where status = "2"
+        <if test="ketcode != null">
+            and title like concat("%",#{keycode},"%")
+        </if>
+    </select>
+    <!--分页查询文章-->
+    <select id="queryPageMap" resultMap="BaseResultMap">
+        select * from t_article where status = '2'
+        <if test="keycode != null">
+            and title like concat("%",#{keycode},"%")
+        </if>
+        order by id desc limit #{startIndex},#{pagesize}
+    </select>
 </mapper>

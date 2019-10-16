@@ -48,8 +48,51 @@ li{
 .navbar-nav>li>span:hover{
     background-color:#FF6666!important;
 }
-#search{
+#speedbar{
+    height: 40px;
+    background: #fbfbfb;
+}
+#toptip{
+    float: left;
+}
+#toptip span i{
+    padding-left: 20px;
+    line-height: 40px;
+    color: #0099CC;
+}
+#toptip span{
+    color: #666;
+    clear: both;
+}
+#pullrigth{
+    float: right;
 
+}
+#pullrigth span i{
+    line-height: 40px;;
+    color: #0099CC;
+}
+#pullrigth span a{
+    color: #666;
+    clear: both;
+    padding-right: 10px;
+    position: relative;
+}
+#pullrigth span a:hover {
+    color: #FF6666;
+    cursor: pointer;
+    text-decoration: none;
+}
+#pullrigth input{
+    margin-right: 15px;
+    height: 40px;
+    width: 265px;
+    position: absolute;
+    right: 0px;
+    z-index: 500;
+    opacity: 0.9;
+    outline: none;
+    display: none;
 }
 .dropdown-menu{
     margin: 0px;
@@ -68,8 +111,7 @@ li{
     padding-top: 10px;
 }
 .col-lg-9{
-  background: white;
-    padding: 0px;
+
     overflow: hidden;
 }
 header{
@@ -178,7 +220,7 @@ header h1{
     padding: 0;
 }
 .col-lg-3{
-    padding-right: 0px;
+
 }
 
 

@@ -6,6 +6,7 @@ import com.gdgm.blog.common.result.ArticleResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ArticleMapper {
      void saveArticle(Article article);
@@ -67,4 +68,8 @@ public interface ArticleMapper {
     List<Integer> queryIdsByMemberid(Integer id);
 
     void deleteArticleByMemberId(Integer id);
+
+    Integer queryAllCountByMap(Map<String, Object> map);
+
+    List<Article> queryPageMap(Map<String, Object> map);
 }

@@ -101,10 +101,17 @@ public class IndexController {
     @ResponseBody
     @RequestMapping("/loadArticle")
     public Object loadArticle(@RequestParam(name ="pagesize" ,defaultValue ="5")Integer pagesize,
-                              @RequestParam(name ="pageno" ,defaultValue ="1")Integer pageno){
+                              @RequestParam(name ="pageno" ,defaultValue ="1")Integer pageno,String keycode){
         AjaxResult result = new AjaxResult();
         try{
-            Page page= articleService.queryPage(pageno,pagesize);
+            Map<String,Object> map = new HashMap<>();
+            map.put("pagesize",pagesize);
+            map.put("pageno",pageno);
+            if(keycode != null && !keycode.equals("")){
+                map.put("keycode",keycode);
+            }
+            map.put("pagesize",pagesize);
+            Page page= articleService.queryPageByMap(map);
             result.setPage(page);
             result.setSuccess(true);
         }catch(Exception e){

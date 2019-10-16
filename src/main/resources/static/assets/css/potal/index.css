@@ -11,15 +11,7 @@ body{
     display: block;
     margin-top: 5px;
 }
-/*大屏幕*/
-@media screen and (min-width:1200px) {
-    .dropdown ul {
-        display: none;
-    }
-    .dropdown:hover ul {
-        display: block;
-    }
-}
+
 /*导航条字体*/
 .navbar-brand,.navbar-default .navbar-nav>li>a {
     color: white!important;
@@ -45,9 +37,53 @@ body{
 .navbar-nav>li>span:hover{
     background-color:#FF6666!important;
 }
-#search{
+#speedbar{
+    height: 40px;
+    background: #fbfbfb;
+}
+#toptip{
+    float: left;
+}
+#toptip span i{
+    padding-left: 20px;
+    line-height: 40px;
+    color: #0099CC;
+}
+#toptip span{
+    color: #666;
+    clear: both;
+}
+#pullrigth{
+    float: right;
 
 }
+#pullrigth span i{
+    line-height: 40px;;
+    color: #0099CC;
+}
+#pullrigth span a{
+    color: #666;
+    clear: both;
+    padding-right: 10px;
+    position: relative;
+}
+#pullrigth span a:hover {
+    color: #FF6666;
+   cursor: pointer;
+    text-decoration: none;
+}
+#pullrigth input{
+    margin-right: 15px;
+    height: 40px;
+    width: 265px;
+    position: absolute;
+    right: 0px;
+    z-index: 500;
+    opacity: 0.9;
+    outline: none;
+    display: none;
+}
+
 .dropdown-menu{
     margin: 0px;
     width: 100px;
@@ -63,12 +99,6 @@ body{
     display: block;
     height: 39px;
     padding-top: 10px;
-}
-.col-lg-9{
-   /* padding: 0px;*/
-}
-.col-lg-3{
-    padding-right: 0px;
 }
 /*通知*/
 .notice{
@@ -88,8 +118,8 @@ body{
     padding-left: 15px;
     background: white;
     margin-bottom: 10px;
+    overflow: hidden;
 }
-.excerpt
 /*文章标题*/
 header{
     margin-bottom: 10px;
@@ -349,6 +379,13 @@ h2{
 }
 /*小屏幕*/
 @media only screen and (max-width: 768px) {
+
+    #search{
+        display: none!important;
+    }
+    #nav-searchbtn{
+        display: none!important;
+    }
     .col-lg-3{
         display: none;
     }
@@ -386,13 +423,28 @@ h2{
         color: white!important;
     }
 }
-@media screen and (max-width: 1200px) and (min-width: 992px) {
+@media screen and (min-width: 768px) and (max-width:991px ){
     .col-lg-3{
         display: none;
     }
+    #search{
+        display: none!important;
+    }
+    #nav-searchbtn{
+        display: none!important;
+    }
+
+ }
+@media screen and (max-width: 1200px) and (min-width: 992px) {
+    #search{
+        width: 290px!important;
+
+    }
 }
+ /*
+
 @media screen and (max-width: 992px) and (min-width: 768px){
     .col-lg-3{
         display: none;
     }
-}
+}*/
