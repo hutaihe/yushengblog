@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>IT博客 | 用户维护</title>
+    <title>余笙博客 | 用户维护</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -49,7 +49,6 @@
                             </div>
                             <button type="button" class="btn btn-warning" onclick="search()"><i class="glyphicon glyphicon-search"></i> 查询</button>
                         </form>
-                        <button type="button" class="btn btn-danger" style="float:right;margin-left:10px;"><i class=" glyphicon glyphicon-remove"></i> 删除</button>
                         <button type="button" class="btn btn-primary" style="float:right;" onclick="addBtn()"><i class="glyphicon glyphicon-plus"></i> 新增</button>
                     </div>
                     <table>
@@ -109,6 +108,7 @@
                     <button type="button" class="btn btn-primary" style="float:right;padding: 2px" onclick="goback()"><i class="glyphicon glyphicon-log-out"></i>返回</button>
                 </div>
                 <div class="panel-body">
+                    <input type="hidden" id="memberid">
                     <div class="formgroup">
                         <label>账号:</label>
                         <input type="text" id="uloginacct" name="loginacct" readonly>
@@ -130,13 +130,7 @@
         </div>
 
     </div>
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-    </footer>
-    <div class="control-sidebar-bg"></div>
+
 </div>
 
 <!-- jQuery 2.1.4 -->
@@ -406,72 +400,13 @@
             },
             success : function(result){
                 if(result.success){
-                    layer.msg(result.message, {time:3000, icon:5, shift:6});
-                }else{
                     layer.msg(result.message, {time:3000, icon:6, shift:6});
+                }else{
+                    layer.msg(result.message, {time:3000, icon:5, shift:6});
                 }
             }
         });
     }
-
-    /*$("#administrators").click(function(){
-        layer.confirm("确定要修改用户的角色吗？",  {icon: 3, title:'提示'}, function(cindex){
-            $.ajax({
-                type : "post",
-                url : "/manager/user/updateRole",
-                data : {
-                    "id":$("#memberid").val()
-                },
-                success : function(result){
-                    if(result.success){
-                        $("#administrators").attr("disabled",true);
-                        $("#contributor").attr("disabled",false);
-                    }else{
-                        $("input[name='urole']").get(1).checked=true;
-                        $("#administrators").attr("disabled",false);
-                        $("#contributor").attr("disabled",true);
-                        layer.msg(result.message, {time:3000, icon:5, shift:6});
-                    }
-                }
-            });
-            layer.close(cindex);
-        }, function(cindex){
-            $("#contributor").get(0).ckecked = true;
-            $("#administrators").attr("disabled",false);
-            $("#contributor").attr("disabled",true);
-            layer.close(cindex);
-        });
-    });
-    $("#contributor").click(function(){
-        alert("contributor");
-        layer.confirm("确定要修改用户的角色吗？",  {icon: 3, title:'提示'}, function(cindex){
-            $.ajax({
-                type : "post",
-                url : "/manager/user/updateRole",
-                data : {
-                    "id":$("#memberid").val()
-                },
-                success : function(result){
-                    if(result.success){
-                        $("#administrators").attr("disabled",false);
-                        $("#contributor").attr("disabled",true);
-                    }else{
-                        $("input[name='urole']").get(0).checked=true;
-                        $("#administrators").attr("checked",true);
-                        $("#contributor").attr("disabled",false);
-                        layer.msg(result.message, {time:3000, icon:5, shift:6});
-                    }
-                }
-            });
-            layer.close(cindex);
-        }, function(cindex){
-            $("#administrators").get(0).ckecked = true;
-            $("#administrators").attr("disabled",true);
-            $("#contributor").attr("disabled",false);
-            layer.close(cindex);
-        });
-    });*/
-
     //还原
     function reductionBtn(){
         updateBtn($("#memberid").val())

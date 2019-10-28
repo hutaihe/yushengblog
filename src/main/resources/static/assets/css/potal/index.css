@@ -63,6 +63,7 @@ body{
     color: #0099CC;
 }
 #pullrigth span a{
+    margin-top: 5px;
     color: #666;
     clear: both;
     padding-right: 10px;
@@ -84,7 +85,16 @@ body{
     outline: none;
     display: none;
 }
-
+#pullrigth span img{
+    margin-top: 5px;
+   width: 30px;
+    height: 30px;
+    border-radius: 90px;
+    border: 1px solid #0099CC;
+}
+#pullrigth span img:hover{
+    border: 1px solid #FF6666;
+}
 .dropdown-menu{
     margin: 0px;
     width: 100px;
@@ -151,7 +161,7 @@ i{
 
 }
 .arcitle-title:hover{
-    color: #2980b9;
+    color: #FF6666;
     text-decoration: none;
 }
 .focus{
@@ -160,10 +170,12 @@ i{
     float: left;
     margin-right: 20px;
     overflow: hidden;
+    border-radius: 5px;
 }
 .focus img{
     width: 200px;
     height: 136px;
+    border-radius: 5px;
 }
 .note{
     display: block;
@@ -175,6 +187,7 @@ i{
 }
 .excerpt p{
     float: right;
+
 }
 .excerpt p span{
     margin-right: 5px;
@@ -196,6 +209,7 @@ i{
 }
 .excerpt:hover img{
     transform: scale(1.2);
+
 }
 /*右边面板*/
 .panel-default{
@@ -221,7 +235,7 @@ i{
 }
 .panel-body ul li a:hover{
     text-decoration: none;
-    color: #95a5a6;
+    color: #FF6666;
 }
 .panel-body .label-1{
     background: #e74c3c;
@@ -354,6 +368,7 @@ h2{
 .like-1 img{
     width: 80px;
     height: 64px;
+    border-radius: 4px;
 }
 .like-2{
     height: 50px;

@@ -2,6 +2,9 @@
 body{
     background: #eee;
 }
+img{
+    border-radius: 4px;
+}
 li{
     list-style-type: none;
 }
@@ -93,6 +96,16 @@ li{
     opacity: 0.9;
     outline: none;
     display: none;
+}
+#pullrigth span img{
+    width: 30px;
+    height: 30px;
+    border-radius: 90px;
+    margin-top: 5px;
+    border: 1px solid #0099CC;
+}
+#pullrigth span img:hover{
+    border: 1px solid #FF6666;
 }
 .dropdown-menu{
     margin: 0px;
@@ -337,6 +350,7 @@ header h1{
 .like-1 img{
     width: 80px;
     height: 64px;
+    border-radius: 4px;
 }
 .like-2{
     height: 50px;

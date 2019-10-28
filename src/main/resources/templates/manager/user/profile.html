@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>IT博客 | 个人资料</title>
+    <title>余笙博客 | 个人资料</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -97,13 +97,7 @@
             </div>
         </div>
     </div>
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.2.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
-    </footer>
-    <div class="control-sidebar-bg"></div>
+
 </div>
 
 <!-- jQuery 2.1.4 -->
@@ -191,7 +185,7 @@
                $("#loginacct").val(data.loginacct);
                $("#username").val(data.username);
                $("#email").val(data.email);
-               $("#headimage").val(data.imagePath);
+               // $("#headimage").val(data.imagePath);
                $("#personalnote").val(data.personalnote);
            }
        });
@@ -209,7 +203,7 @@
                 if(result.success){
                     layer.msg("数据保存成功,请重新登录！", {time:2000, icon:6});
                     setTimeout(function(){
-                        window.location.href="/index";
+                        window.location.href="/doLogout";
                     },2000);
                 }else{
                     layer.msg("数据保存失败", {time:1000, icon:5, shift:6});

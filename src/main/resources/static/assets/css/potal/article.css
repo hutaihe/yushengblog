@@ -3,6 +3,9 @@ body {
     background: #eee;
     font-family: "微软雅黑";
 }
+img{
+    border-radius: 4px;
+}
 /*头部登录链接*/
 .col-lg-12{
     height: 30px;
@@ -85,7 +88,16 @@ body {
     outline: none;
     display: none;
 }
-
+#pullrigth span img{
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 90px;
+    border: 1px solid #0099CC;
+}
+#pullrigth span img:hover{
+    border: 1px solid #FF6666;
+}
 .dropdown-menu{
     margin: 0px;
     width: 100px;
@@ -512,6 +524,7 @@ i{
 .focus img{
     width: 200px;
     height: 136px;
+
 }
 .note{
     display: block;
@@ -702,6 +715,7 @@ h2{
 .like-1 img{
     width: 80px;
     height: 64px;
+    border-radius: 4px;
 }
 .like-2{
     height: 50px;

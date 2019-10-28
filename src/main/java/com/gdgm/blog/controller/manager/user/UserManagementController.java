@@ -113,7 +113,7 @@ public class UserManagementController {
         AjaxResult result = new AjaxResult();
         try{
             Member member1 = memberService.queryMemberByUserName(member.getUsername());
-            Member member2 = memberService.queryMemberByEmail(member.getEmail());
+//            Member member2 = memberService.queryMemberByEmail(member.getEmail());
             if(member1 != null){
                 result.setSuccess(false);
                 result.setMessage("用户名已经存在，请重新修改用户名！");

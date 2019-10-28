@@ -47,9 +47,22 @@ public class ArticleController {
             if(types.size()>1){
                 next = articleService.queryArticlesByGreaterThanId(id,types.get(1).getId()); // 根据文章的id和分类查询id比他大的id
                 last = articleService.queryArticlesByLessThanId(id,types.get(1).getId()); // 根据文章的id和分类查询id比他小的id
+
+                if(next != null && next.getTitle().length()>=40){
+                    next.setTitle(next.getTitle().substring(0,37)+"...");
+                }
+                if(last != null && last.getTitle().length()>=40){
+                    last.setTitle(last.getTitle().substring(0,37)+"...");
+                }
             }else{
                 next = articleService.queryArticlesByGreaterThanId(id,types.get(0).getId()); // 根据文章的id和分类查询id比他大的id
                 last = articleService.queryArticlesByLessThanId(id,types.get(0).getId()); // 根据文章的id和分类查询id比他小的id
+                if(next != null && next.getTitle().length()>=40){
+                    next.setTitle(next.getTitle().substring(0,37)+"...");
+                }
+                if(last != null && last.getTitle().length()>=40){
+                    last.setTitle(last.getTitle().substring(0,37)+"...");
+                }
             }
             //如果查询的文章不是null就传到前端
             if(next != null){
