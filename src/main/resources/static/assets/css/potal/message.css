@@ -107,7 +107,7 @@ li{
 }
 .dropdown-menu li a{
     display: block;
-    height: 39px;
+    height: 39px;-
     padding-top: 10px;
 }
 .col-lg-9{
@@ -401,10 +401,17 @@ header h1{
         color: white!important;
     }
 }
-@media screen and (max-width: 1200px) and (min-width: 992px) {
+@media screen and (min-width: 768px) and (max-width:991px ){
     .col-lg-3{
         display: none;
     }
+    #search{
+        display: none!important;
+    }
+    #nav-searchbtn{
+        display: none!important;
+    }
+
 }
 @media screen and (max-width: 992px) and (min-width: 768px){
     .col-lg-3{

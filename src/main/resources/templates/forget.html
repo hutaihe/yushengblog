@@ -7,24 +7,23 @@
 </head>
 <body>
 <div id="container">
-    <img src="http://img.php.cn/upload/course/000/000/004/58144f924a5da186.gif" width=100% height=30%>
-    <h4>找回密码</h4>
-    <p>
-        新密码将会通过邮件发送给您。
-    </p>
-    <p>
-        <input type="text" placeholder="请输入账号" id="floginacct">
-    </p>
-    <p>
-        <input type="text" placeholder="请输入邮箱" id="femail">
-    </p>
+    <div id="login-content">
+        <h4>找回密码</h4>
+        <p>
+            新密码将会通过邮件发送给您。
+        </p>
+        <label>账号</label><br>
+        <input type="text" placeholder="请输入账号" id="floginacct">    <label>密码</label><br>
+        <input type="text" placeholder="请输入邮箱" id="femail"><br>
+        <div id="login-login">
+            <button id="obtain" >获取新密码</button>
+        </div>
+    </div>
 
-    <p>
-        <button id="obtain" >获取新密码</button>
-    </p>
-    <p>
+    <div id="login-footer">
         <a href="/toLogin">返回登录界面</a>
-    </p>
+    </div>
+
 </div>
 </body>
 

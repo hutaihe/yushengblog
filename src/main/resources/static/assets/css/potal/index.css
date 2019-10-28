@@ -4,8 +4,9 @@ body{
 }
 /*头部登录链接*/
 .col-lg-12{
-    height: 30px;
+    height: 40px;
     background: #eee;
+    overflow: hidden;
 }
 .top{
     display: block;
@@ -441,10 +442,3 @@ h2{
 
     }
 }
- /*
-
-@media screen and (max-width: 992px) and (min-width: 768px){
-    .col-lg-3{
-        display: none;
-    }
-}*/
