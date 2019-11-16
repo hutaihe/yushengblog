@@ -543,4 +543,9 @@ public class ArticleServiceImpl implements ArticleService {
         page.setArticleResults(articleResults);
         return page;
     }
+
+    @Override
+    public Integer queryAllCountByStatus(String status) {
+        return articleMapper.queryAllCountByStatus(status);
+    }
 }

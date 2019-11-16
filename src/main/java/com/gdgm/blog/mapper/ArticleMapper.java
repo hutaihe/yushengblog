@@ -72,4 +72,6 @@ public interface ArticleMapper {
     Integer queryAllCountByMap(Map<String, Object> map);
 
     List<Article> queryPageMap(Map<String, Object> map);
+
+    Integer queryAllCountByStatus(String status);
 }

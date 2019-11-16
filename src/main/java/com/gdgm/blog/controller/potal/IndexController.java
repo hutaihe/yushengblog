@@ -36,6 +36,8 @@ public class IndexController {
     private LabelService labelService;
     @Autowired
     private PictureService pictureService;
+    @Autowired
+    private MessageService messageService;
     @GetMapping("/index")
     public String index(){
         return "index";
@@ -249,6 +251,24 @@ public class IndexController {
         }catch(Exception e){
             e.printStackTrace();
             result.setMessage("加载文章失败！");
+            result.setSuccess(false);
+        }
+        return result;
+    }
+    //本站简介
+    @RequestMapping("/loadBrief")
+    @ResponseBody
+    public Object loadBrief(){
+        AjaxResult result = new AjaxResult();
+        try{
+            Integer arnum = articleService.queryAllCountByStatus("2");
+            Integer menum = messageService.queryAllCount();
+            result.setMenum(menum);
+            result.setArnum(arnum);
+            result.setSuccess(true);
+        }catch(Exception e){
+            e.printStackTrace();
+            result.setMessage("加载失败！");
             result.setSuccess(false);
         }
         return result;

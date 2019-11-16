@@ -24,4 +24,6 @@ public interface MessageMapper {
     List<MessageResult> loadMessage(Map<String, Object> map);
 
     void saveMessage(Message message);
+
+    Integer queryAllCount();
 }

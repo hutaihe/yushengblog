@@ -2,17 +2,30 @@
 body{
     background: #eee;
 }
+img{
+    border-radius: 4px;
+}
+li{
+    list-style-type: none;
+}
 /*头部登录链接*/
 .col-lg-12{
-    height: 40px;
+    height: 30px;
     background: #eee;
-    overflow: hidden;
 }
 .top{
     display: block;
     margin-top: 5px;
 }
-
+/*大屏幕*/
+@media screen and (min-width:1200px) {
+    .dropdown ul {
+        display: none;
+    }
+    .dropdown:hover ul {
+        display: block;
+    }
+}
 /*导航条字体*/
 .navbar-brand,.navbar-default .navbar-nav>li>a {
     color: white!important;
@@ -28,8 +41,8 @@ body{
     background-color:#FF6666!important;
 }
 .navbar-nav>li>a:hover{
-     background-color:#FF6666!important;
- }
+    background-color:#FF6666!important;
+}
 .navbar-nav>li>span{
     color: white!important;
     padding: 17px;
@@ -63,7 +76,6 @@ body{
     color: #0099CC;
 }
 #pullrigth span a{
-    margin-top: 5px;
     color: #666;
     clear: both;
     padding-right: 10px;
@@ -71,7 +83,7 @@ body{
 }
 #pullrigth span a:hover {
     color: #FF6666;
-   cursor: pointer;
+    cursor: pointer;
     text-decoration: none;
 }
 #pullrigth input{
@@ -86,10 +98,10 @@ body{
     display: none;
 }
 #pullrigth span img{
-    margin-top: 5px;
-   width: 30px;
+    width: 30px;
     height: 30px;
     border-radius: 90px;
+    margin-top: 5px;
     border: 1px solid #0099CC;
 }
 #pullrigth span img:hover{
@@ -111,6 +123,7 @@ body{
     height: 39px;
     padding-top: 10px;
 }
+
 /*通知*/
 .notice{
     background: white;
@@ -149,7 +162,7 @@ header{
 }
 i{
     margin-left: -8px;
-   font-size: 4px;
+    font-size: 4px;
     color: #e74c3c;
 }
 /*文章标题*/
@@ -225,7 +238,7 @@ i{
     margin: 0px;
 }
 .panel-body ul li{
-   list-style: none;
+    list-style: none;
     margin-bottom: 10px;
 }
 .panel-body ul li a{
@@ -339,6 +352,89 @@ h2{
     border-top: 1px solid #ddd;
 
 }
+.panel-default{
+    border: 0px;
+}
+.panel-heading{
+    color:  #0099CC!important;
+    background: white!important;
+    border-bottom:1px solid  #ddd !important ;
+}
+.panel-body ul{
+    padding: 0px;
+    margin: 0px;
+}
+.panel-body ul li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+.panel-body ul li a{
+    font-size: 10px;
+    line-height: 22px;
+    color: #777;
+}
+.panel-body ul li a:hover{
+    text-decoration: none;
+    color: #95a5a6;
+}
+.panel-body .label-1{
+    background: #e74c3c;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.panel-body .label-2{
+    background: #6fc299;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.panel-body .label-3{
+    background: #81c1f2;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+.panel-body .label-4{
+    background: #999;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 500;
+    border-radius: 0px;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+
 /*标签库*/
 .label-button button{
     background: white;
@@ -388,6 +484,7 @@ h2{
 .like-4{
     color: #999;
 }
+
 /*页脚*/
 .footer{
     height: 80px;
@@ -395,13 +492,6 @@ h2{
 }
 /*小屏幕*/
 @media only screen and (max-width: 768px) {
-
-    #search{
-        display: none!important;
-    }
-    #nav-searchbtn{
-        display: none!important;
-    }
     .col-lg-3{
         display: none;
     }
@@ -435,7 +525,7 @@ h2{
         display: none;
     }
     /*导航条*/
-     .dropdown-menu>li>a{
+    .dropdown-menu>li>a{
         color: white!important;
     }
 }
@@ -450,10 +540,9 @@ h2{
         display: none!important;
     }
 
- }
-@media screen and (max-width: 1200px) and (min-width: 992px) {
-    #search{
-        width: 290px!important;
-
+}
+@media screen and (max-width: 992px) and (min-width: 768px){
+    .col-lg-3{
+        display: none;
     }
 }

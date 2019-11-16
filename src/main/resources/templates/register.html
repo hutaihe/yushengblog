@@ -9,7 +9,7 @@
 <body>
 <div id="container">
     <div id="login-content">
-        <h4>博客,记录生活中的点点滴滴!</h4>
+        <h4>余笙博客,记录生活中的点点滴滴!</h4>
         <p>在博客中,可以畅所欲言,可以学习IT最新的知识！</p>
         <label>账号</label><br>
         <input type="text" placeholder="请输入账号，最长十八个字符" id="floginacct"><br>
@@ -28,121 +28,12 @@
     <div id="login-footer">
         <a href="/toLogin">返回登录界面</a>
     </div>
-    <!--<img src="http://img.php.cn/upload/course/000/000/004/58144f924a5da186.gif" width=100% height=30%>
-    <h4>欢迎注册IT博客</h4>
-    <p>在博客中,可以畅所欲言,可以学习IT最新的知识！</p>
-    <p>
 
-    </p>
-    <p>
-
-    </p>
-    <p>
-
-    </p>
-    <p>
-
-    </p>
-    <p>
-
-    </p>
-    <p>
-
-    </p>
-    <p>
-
-    </p>-->
 </div>
 </body>
 
-<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/jquery/jQuery-2.1.4.min.js"></script>
 <script src="/layer/layer.js"></script>
 <script src="/jquery/jquery.form.js"></script>
-<script>
-    $("#checkResiter").click(function(){
-        var floginacct = $("#floginacct");
-        var fusername = $("#fusername");
-        var femail = $("#femail");
-        var fuserpswd = $("#fuserpswd");
-        var fconfirmpassword = $("#fconfirmpassword");
-        var myreg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
-        if(floginacct.val() == ""){
-            layer.msg("请输入登录账号！", {time:1500, icon:5, shift:6});
-            floginacct.focus();
-            return false;
-        }else{
-            if(floginacct.val().length >18){
-                layer.msg("登录账号过长，请重新输入！", {time:1500, icon:5, shift:6});
-                floginacct.val("");
-                floginacct.focus();
-                return false;
-            }
-        }
-        if(fusername.val() == ""){
-            layer.msg("请输入昵称！", {time:1500, icon:5, shift:6});
-            fusername.focus();
-            return false;
-        }
-        if(femail.val() == ""){
-            layer.msg("请输入邮箱！", {time:1500, icon:5, shift:6});
-            femail.focus();
-            return false;
-        }else{
-            if(!myreg.test(femail.val())){
-                layer.msg("邮件格式不正确，请输入正确的邮箱！", {time:1500, icon:5, shift:6});
-                femail.val("");
-                femail.focus();
-                return false;
-            }
-        }
-        if(fuserpswd.val() == ""){
-            layer.msg("请输入登录密码！", {time:1500, icon:5, shift:6});
-            fuserpswd.focus();
-            return false;
-        }
-        if(fconfirmpassword.val() == ""){
-            layer.msg("请确认密码！", {time:1500, icon:5, shift:6});
-            fconfirmpassword.focus();
-            return false;
-        }else{
-            if(fuserpswd.val() != fconfirmpassword.val()){
-                layer.msg("两次密码不一致，请重新确认密码！", {time:1500, icon:5, shift:6});
-                fconfirmpassword.val("");
-                fconfirmpassword.focus();
-                return false;
-            }
-        }
-        var loadingIndex = -1;
-        var floginacct = $("#floginacct");
-        var fusername = $("#fusername");
-        var femail = $("#femail");
-        var fuserpswd = $("#fuserpswd");
-
-        $.ajax({
-            type: "post",
-            data : {
-                "loginacct" : floginacct.val(),
-                "username" : fusername.val(),
-                "email" : femail.val(),
-                "userpswd" : fuserpswd.val()
-            },
-            url :"/doRegister",
-            beforeSend: function() {
-                loadingIndex = layer.msg('正在注册', {icon: 16});
-            },
-            success : function(result){
-                layer.close(loadingIndex);
-                if(result.success){
-                    layer.msg("注册成功，3s后跳转到登录界面！", {time:1500, icon:6});
-                    setTimeout(function(){
-                        window.location.href="/toLogin"
-                    },3000)
-                }else{
-                    layer.msg(result.message, {time:1500, icon:5, shift:6});
-                }
-            }
-
-        });
-    });
-</script>
+<script src="js/register.js"></script>
 </html>

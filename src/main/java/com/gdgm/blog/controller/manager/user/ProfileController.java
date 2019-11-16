@@ -43,7 +43,7 @@ public class ProfileController {
             Role role = roleService.queryRoleByMemberid(member.getId());
             memberResult.setRole(role.getName());
             if(member1.getImage() != null){
-                memberResult.setImagePath("E:/image/pic/"+member.getImage());
+                memberResult.setImagePath("/root/javaweb/image/pic/"+member.getImage());
             }
             result.setMemberResult(memberResult);
             result.setSuccess(true);
@@ -65,7 +65,7 @@ public class ProfileController {
                 String name =  selectfile.getOriginalFilename();
                 String extname = name.substring(name.lastIndexOf("."));
                 String iconpath = UUID.randomUUID().toString()+extname;
-                String path = "E:/image/pic/"+iconpath;
+                String path = "/root/javaweb/image/pic/"+iconpath;
                 member.setImage(iconpath);
                 selectfile.transferTo(new File(path));
             }

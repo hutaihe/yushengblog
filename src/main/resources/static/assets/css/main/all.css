@@ -113,8 +113,9 @@
     border-radius: 4px;
     float: left;
     font-size: 10px;
-    margin-right: 10px;
+    margin-right: 8px;
     outline:none;
+    float: left;
 }
 #tranbtn .a1{
     background: #0d71bb;

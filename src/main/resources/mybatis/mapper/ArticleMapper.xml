@@ -169,4 +169,7 @@
         </if>
         order by id desc limit #{startIndex},#{pagesize}
     </select>
+    <select id="queryAllCountByStatus" resultType="int">
+        select count(*) from t_article where status = #{status}
+    </select>
 </mapper>

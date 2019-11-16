@@ -67,4 +67,6 @@ public interface ArticleService {
     void deleteArticleByMemberId(Integer id);
 
     Page queryPageByMap(Map<String, Object> map);
+
+    Integer queryAllCountByStatus(String status);
 }

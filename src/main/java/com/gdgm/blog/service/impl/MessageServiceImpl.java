@@ -71,4 +71,9 @@ public class MessageServiceImpl implements MessageService {
     public void saveMessage(Message message) {
         messageMapper.saveMessage(message);
     }
+
+    @Override
+    public Integer queryAllCount() {
+        return messageMapper.queryAllCount();
+    }
 }

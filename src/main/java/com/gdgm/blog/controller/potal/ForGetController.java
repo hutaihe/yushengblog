@@ -55,7 +55,7 @@ public class ForGetController {
           helper.setTo(member.getEmail());
           helper.setSubject("找回密码");
           helper.setFrom("1343314863@qq.com");
-          helper.setText("IT博客提示你正在进行找回密码操作，如果是本人操作，请点击<a href='http://localhost:8080/doChangePasword?loginacct=" + loginacct + "&code=" + code + "'>修改密码</a>链接进行修改,</br>点击修改密码后，新密码将会以邮件形式发给你,该链接30分钟有效！", true);
+          helper.setText("IT博客提示你正在进行找回密码操作，如果是本人操作，请点击<a href='http://120.55.165.50:8080/doChangePasword?loginacct=" + loginacct + "&code=" + code + "'>修改密码</a>链接进行修改,</br>点击修改密码后，新密码将会以邮件形式发给你,该链接30分钟有效！", true);
           javaMailSender.send(mimeMessage);
           result.setSuccess(true);
           session.setAttribute("code",code);

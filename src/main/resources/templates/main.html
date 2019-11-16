@@ -168,7 +168,7 @@
     </div>
 </div>
 
-<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/jquery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- AdminLTE App -->
@@ -178,28 +178,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js" type="text/javascript"></script>
 <script src="/layer/layer.js"></script>
-<script>
-    window.onload = function(){
-        loadData();
-    }
-    function loadData(){
-        $.ajax({
-            type : "post",
-            url : "/LoadData",
-            data:{},
-            success : function(result){
-                if(result.success){
-                    var data = result.dataResult;
-                    $("#articles").text(data.articles);
-                    $("#comments").text(data.comments);
-                    $("#enclosures").text(data.enclosures);
-                    $("#days").text(data.days);
-                    var createtime = data.createtime;
-                    $("#createtime").text(createtime.substr(0,createtime.lastIndexOf(" ")));
-                }
-            }
-        })
-    }
-</script>
+<script src="/js/main.js"></script>
 </body>
 </html>

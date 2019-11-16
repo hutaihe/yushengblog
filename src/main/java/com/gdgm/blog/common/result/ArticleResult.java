@@ -31,6 +31,8 @@ public class ArticleResult {
     private Integer likenum; //喜欢数
     private Integer comnum; //评论数
     private Integer fabulous;//赞
+
+
     public Integer getId() {
         return id;
     }
@@ -190,4 +192,6 @@ public class ArticleResult {
     public void setFabulous(Integer fabulous) {
         this.fabulous = fabulous;
     }
+
+
 }

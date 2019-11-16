@@ -38,4 +38,6 @@ public interface MemberService {
     Boolean deleteMemberById(Integer id);
 
     String queryMemberByArticleId(Integer memberid);
+
+
 }

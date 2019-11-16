@@ -62,4 +62,7 @@
     <insert id="saveMessage">
         insert into t_message(memberid,content,createtime,status) value(#{memberid},#{content},#{createtime},#{status})
     </insert>
+    <select id="queryAllCount" resultType="int">
+        select count(*) from t_message
+    </select>
 </mapper>

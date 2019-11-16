@@ -56,6 +56,26 @@ public class AjaxResult {
 
     private  Message mesa;
 
+    private Integer menum; //文章数
+
+    public Integer getMenum() {
+        return menum;
+    }
+
+    public void setMenum(Integer menum) {
+        this.menum = menum;
+    }
+
+    public Integer getArnum() {
+        return arnum;
+    }
+
+    public void setArnum(Integer arnum) {
+        this.arnum = arnum;
+    }
+
+    private Integer arnum;//留言数
+
     public DataResult getDataResult() {
         return dataResult;
     }

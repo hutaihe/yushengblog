@@ -104,7 +104,7 @@ public class WriteArticleController {
             String extname = name.substring(name.lastIndexOf(".")); // .jpg
             String iconpath = UUID.randomUUID().toString()+extname; //232243343.jpg
             //String path ="/root/javaweb/image/pic/"+iconpath;
-            String path ="E:/image/thumbnail/"+iconpath;
+            String path ="/root/javaweb/image/thumbnail/"+iconpath;
            // String path =resourcepath+ "/static/picture/thumbnail/" +iconpath;
             mfile.transferTo(new File(path));
             Picture picture = new Picture();
