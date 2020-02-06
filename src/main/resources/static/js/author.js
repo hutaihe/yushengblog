@@ -46,7 +46,6 @@ function loadNav(){
                         }
                         content += "<li id='"+n.id+"'><a href='"+n.url+"?id="+n.id+"'>"+n.name+"</a></li>";
                     }
-                    content += "<li><a href='/message'>留言</a></li>";
                 });
                 $("#nav").append(content);
             }else{

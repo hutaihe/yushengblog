@@ -56,7 +56,6 @@ function loadNav(){
         }
 
     })
-
 }
 //获取请求地址的参数
 function GetQueryString(name) {
